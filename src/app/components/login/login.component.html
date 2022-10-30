@@ -1,14 +1,26 @@
 <div class="body">
-  <div class="login" >
+  <div class="login">
     <img src="./assets/img/acceso.png" alt="img" width="128"/>
-    <br />
-    <mat-form-field appearance="fill">
-      <mat-label>Input</mat-label>
-      <input matInput>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Input</mat-label>
-      <input matInput>
-    </mat-form-field>
+    <br/>
+    <mat-spinner *ngIf="loading" diameter="50" style="margin: auto"></mat-spinner>
+
+    <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="login()">
+      <mat-form-field appearance="fill" class="input-width">
+        <mat-label>Usuario</mat-label>
+        <input matInput formControlName="user" autocomplete="off">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="input-width">
+        <mat-label>Contraseña</mat-label>
+        <input type="password" matInput formControlName="pswrd" autocomplete="off">
+      </mat-form-field>
+      <br/>
+      <button mat-raised-button color="primary"
+              class="input-width button-login"
+              type="submit"
+              [disabled] = "form.invalid"
+      >
+        Ingresar
+      </button>
+    </form>
   </div>
 </div>
