@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,9 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   loading = false;
 
-  constructor(private formBuilder: FormBuilder, private _snackBar: MatSnackBar) {
+  constructor(private formBuilder: FormBuilder,
+              private _snackBar: MatSnackBar,
+              private router: Router) {
     this.form = formBuilder.group({
       user: ['', Validators.required],
       pswrd: ['', Validators.required]
@@ -27,6 +30,9 @@ export class LoginComponent implements OnInit {
 
     if (user === 'mgrellet' && pass === '123') {
       this.loading = true;
+      setTimeout(() => {
+        this.router.navigate(['dashboard']);
+      }, 1500)
     } else {
       this.form.reset();
       this.errorMessage();
