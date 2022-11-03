@@ -1,8 +1,11 @@
 <mat-toolbar color="primary">
   <span class="spacer">My Application</span>
-  <button mat-button>Carga Traje</button>
-  <button mat-button>Reporte</button>
-  <button mat-button>Accent</button>
+
+  <button mat-button
+          *ngFor="let item of menu"
+          [routerLink]="item.redirect">
+    {{item.name}}
+  </button>
   <span class="spacer">  </span>
   <button mat-icon-button aria-label="Example icon button with a heart icon">
     <mat-icon>logout</mat-icon>

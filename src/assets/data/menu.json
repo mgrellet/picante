@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Carga Trajes",
+    "redirect": "/dashboard"
+  },
+  {
+    "name": "Reporte",
+    "redirect": "/dashboard/reportes"
+  }
+]

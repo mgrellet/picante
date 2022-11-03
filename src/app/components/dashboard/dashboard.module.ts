@@ -5,13 +5,17 @@ import {DashboardRoutingModule} from './dashboard-routing.module';
 import {SharedModule} from "../shared/shared.module";
 import {DashboardComponent} from "./dashboard.component";
 import { NavbarComponent } from './navbar/navbar.component';
+import { MainComponent } from './main/main.component';
+import { ReportComponent } from './report/report.component';
 
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    NavbarComponent
+    NavbarComponent,
+    MainComponent,
+    ReportComponent
   ],
   imports: [
     CommonModule,
