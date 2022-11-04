@@ -4,10 +4,9 @@ import {CommonModule} from '@angular/common';
 import {DashboardRoutingModule} from './dashboard-routing.module';
 import {SharedModule} from "../shared/shared.module";
 import {DashboardComponent} from "./dashboard.component";
-import { NavbarComponent } from './navbar/navbar.component';
-import { MainComponent } from './main/main.component';
-import { ReportComponent } from './report/report.component';
-
+import {NavbarComponent} from './navbar/navbar.component';
+import {MainComponent} from './main/main.component';
+import {ReportComponent} from './report/report.component';
 
 
 @NgModule({
@@ -21,7 +20,6 @@ import { ReportComponent } from './report/report.component';
     CommonModule,
     DashboardRoutingModule,
     SharedModule,
-
   ]
 })
 export class DashboardModule {

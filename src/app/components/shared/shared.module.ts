@@ -13,6 +13,10 @@ import {MatInputModule} from "@angular/material/input";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {MatTableModule} from "@angular/material/table";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatSortModule} from "@angular/material/sort";
 
 
 @NgModule({
@@ -31,7 +35,11 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     MatInputModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
+    MatTooltipModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   exports: [
     MatToolbarModule,
@@ -46,7 +54,11 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     MatInputModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
+    MatTooltipModule,
+    MatPaginatorModule,
+    MatSortModule,
   ]
 })
 export class SharedModule {
