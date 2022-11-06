@@ -1,6 +1,8 @@
 <div class="container">
   <mat-toolbar>
     <span>Reporte</span>
+    <div class="spacer"></div>
+    <button mat-raised-button color="primary" routerLink="/dashboard">Agregar registro</button>
   </mat-toolbar>
   <div *ngIf="weeklyRentList.length === 0">
     <span>Sin alquileres cargados</span>

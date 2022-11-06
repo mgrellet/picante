@@ -12,7 +12,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from "@angular/common/http";
 import {MatTableModule} from "@angular/material/table";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatPaginatorModule} from "@angular/material/paginator";
@@ -40,6 +40,8 @@ import {MatSortModule} from "@angular/material/sort";
     MatTooltipModule,
     MatPaginatorModule,
     MatSortModule,
+    MatCardModule,
+    MatGridListModule
   ],
   exports: [
     MatToolbarModule,
@@ -59,6 +61,8 @@ import {MatSortModule} from "@angular/material/sort";
     MatTooltipModule,
     MatPaginatorModule,
     MatSortModule,
+    MatCardModule,
+    MatGridListModule
   ]
 })
 export class SharedModule {
