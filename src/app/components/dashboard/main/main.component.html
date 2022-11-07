@@ -7,37 +7,96 @@
     <form>
       <br>
       <mat-grid-list cols="3" rowHeight="100px">
-        <mat-grid-tile [colspan]="2" [rowspan]="1" [style.background]="'lightblue'">
-          <mat-form-field appearance="fill">
+
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field class="form-field-width-medium">
+            <mat-label>D.N.I</mat-label>
+            <input matInput>
+          </mat-form-field>
+        </mat-grid-tile>
+
+
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field class="form-field-width-big">
             <mat-label>Señor(es)</mat-label>
             <input matInput>
           </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'lightblue'">D.N.I
+
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-form-field class="form-field-width-big">
+            <mat-label>Email</mat-label>
+            <input matInput>
+          </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="2" [rowspan]="1" [style.background]="'lightblue'">Domicilio
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field>
+            <mat-label>Telefono</mat-label>
+            <input matInput>
+          </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'lightblue'">Tel
+
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-form-field class="form-field-width-big">
+            <mat-label>Domicilio</mat-label>
+            <input matInput>
+          </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="3" [rowspan]="1" [style.background]="'lightblue'">Fecha para
-          reserva
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field>
+            <mat-label>Fecha de reserva</mat-label>
+            <input matInput [matDatepicker]="reservationdate">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="reservationdate"></mat-datepicker-toggle>
+            <mat-datepicker #reservationdate></mat-datepicker>
+          </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="2" [rowspan]="1" [style.background]="'lightblue'">Un
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-form-field>
+            <mat-label>Un</mat-label>
+            <input matInput>
+          </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'lightblue'">Talle
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field>
+            <mat-label>Talle</mat-label>
+            <input matInput>
+          </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="2" [rowspan]="1" [style.background]="'lightblue'">Modelo
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-form-field>
+            <mat-label>Modelo</mat-label>
+            <input matInput>
+          </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'lightblue'">Color
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field>
+            <mat-label>Color</mat-label>
+            <input matInput>
+          </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'lightblue'">Camisa
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field>
+            <mat-label>Camisa</mat-label>
+            <input matInput>
+          </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'lightblue'">Corbata
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field>
+            <mat-label>Corbata</mat-label>
+            <input matInput>
+          </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'lightblue'">Chaleco
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field>
+            <mat-label>Chaleco</mat-label>
+            <input matInput>
+          </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'lightblue'">
-          <mat-form-field appearance="fill">
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field>
             <mat-label>Fecha de prueba</mat-label>
             <input matInput [matDatepicker]="trydate">
             <mat-hint>DD/MM/YYYY</mat-hint>
@@ -45,8 +104,8 @@
             <mat-datepicker #trydate></mat-datepicker>
           </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'lightblue'">
-          <mat-form-field appearance="fill">
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field>
             <mat-label>Fecha de entrega</mat-label>
             <input matInput [matDatepicker]="givedate">
             <mat-hint>DD/MM/YYYY</mat-hint>
@@ -54,8 +113,8 @@
             <mat-datepicker #givedate></mat-datepicker>
           </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'lightblue'">
-          <mat-form-field appearance="fill">
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field>
             <mat-label>Fecha de devolución</mat-label>
             <input matInput [matDatepicker]="returndate">
             <mat-hint>DD/MM/YYYY</mat-hint>
@@ -63,17 +122,23 @@
             <mat-datepicker #returndate></mat-datepicker>
           </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="3" [rowspan]="1" [style.background]="'lightblue'"> Precio total
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field>
+            <mat-label>Precio total</mat-label>
+            <input matInput>
+          </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="3" [rowspan]="1" [style.background]="'lightblue'"> Anticipo
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field>
+            <mat-label>anticipo</mat-label>
+            <input matInput>
+          </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="3" [rowspan]="1" [style.background]="'lightblue'"> Saldo a retirar
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'lightblue'">
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'lightblue'">Teléfono
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'lightblue'">Email
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field>
+            <mat-label>Saldo a retirar</mat-label>
+            <input matInput>
+          </mat-form-field>
         </mat-grid-tile>
       </mat-grid-list>
     </form>
