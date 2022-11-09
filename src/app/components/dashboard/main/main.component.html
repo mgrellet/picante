@@ -4,14 +4,14 @@
   </mat-toolbar>
 
   <mat-card style="margin-top: 10px">
-    <form>
+    <form [formGroup]="rentForm" (ngSubmit)="addRent()">
       <br>
       <mat-grid-list cols="3" rowHeight="100px">
 
         <mat-grid-tile [colspan]="3" [rowspan]="1">
           <mat-form-field class="form-field-width-medium">
             <mat-label>D.N.I</mat-label>
-            <input matInput>
+            <input matInput autocomplete="off" formControlName="dni">
           </mat-form-field>
         </mat-grid-tile>
 
@@ -19,35 +19,35 @@
         <mat-grid-tile [colspan]="3" [rowspan]="1">
           <mat-form-field class="form-field-width-big">
             <mat-label>Señor(es)</mat-label>
-            <input matInput>
+            <input matInput formControlName="name">
           </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <mat-form-field class="form-field-width-big">
             <mat-label>Email</mat-label>
-            <input matInput>
+            <input matInput formControlName="email">
           </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field>
             <mat-label>Telefono</mat-label>
-            <input matInput>
+            <input matInput formControlName="phone">
           </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <mat-form-field class="form-field-width-big">
             <mat-label>Domicilio</mat-label>
-            <input matInput>
+            <input matInput formControlName="address">
           </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field>
             <mat-label>Fecha de reserva</mat-label>
-            <input matInput [matDatepicker]="reservationdate">
+            <input matInput [matDatepicker]="reservationdate" formControlName="reservationDate">
             <mat-hint>DD/MM/YYYY</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="reservationdate"></mat-datepicker-toggle>
             <mat-datepicker #reservationdate></mat-datepicker>
@@ -56,49 +56,49 @@
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <mat-form-field>
             <mat-label>Un</mat-label>
-            <input matInput>
+            <input matInput formControlName="type">
           </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field>
             <mat-label>Talle</mat-label>
-            <input matInput>
+            <input matInput formControlName="size">
           </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <mat-form-field>
             <mat-label>Modelo</mat-label>
-            <input matInput>
+            <input matInput formControlName="model">
           </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field>
             <mat-label>Color</mat-label>
-            <input matInput>
+            <input matInput formControlName="color">
           </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field>
             <mat-label>Camisa</mat-label>
-            <input matInput>
+            <input matInput formControlName="shirt">
           </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field>
             <mat-label>Corbata</mat-label>
-            <input matInput>
+            <input matInput formControlName="tie">
           </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field>
             <mat-label>Chaleco</mat-label>
-            <input matInput>
+            <input matInput formControlName="vest">
           </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field>
             <mat-label>Fecha de prueba</mat-label>
-            <input matInput [matDatepicker]="trydate">
+            <input matInput [matDatepicker]="trydate" formControlName="tryDate">
             <mat-hint>DD/MM/YYYY</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="trydate"></mat-datepicker-toggle>
             <mat-datepicker #trydate></mat-datepicker>
@@ -107,7 +107,7 @@
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field>
             <mat-label>Fecha de entrega</mat-label>
-            <input matInput [matDatepicker]="givedate">
+            <input matInput [matDatepicker]="givedate" formControlName="giveDate">
             <mat-hint>DD/MM/YYYY</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="givedate"></mat-datepicker-toggle>
             <mat-datepicker #givedate></mat-datepicker>
@@ -116,7 +116,7 @@
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field>
             <mat-label>Fecha de devolución</mat-label>
-            <input matInput [matDatepicker]="returndate">
+            <input matInput [matDatepicker]="returndate" formControlName="returnDate">
             <mat-hint>DD/MM/YYYY</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="returndate"></mat-datepicker-toggle>
             <mat-datepicker #returndate></mat-datepicker>
@@ -125,22 +125,31 @@
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field>
             <mat-label>Precio total</mat-label>
-            <input matInput>
+            <input matInput formControlName="price">
           </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field>
             <mat-label>anticipo</mat-label>
-            <input matInput>
+            <input matInput formControlName="advancePayment">
           </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field>
             <mat-label>Saldo a retirar</mat-label>
-            <input matInput>
+            <input matInput formControlName="balance">
           </mat-form-field>
         </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <button mat-raised-button >Limpiar</button>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <button mat-raised-button color="primary" type="submit">Agregar</button>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1"></mat-grid-tile>
       </mat-grid-list>
+
+
     </form>
   </mat-card>
 </div>

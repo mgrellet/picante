@@ -19,6 +19,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import {MatNativeDateModule} from "@angular/material/core";
     MatCardModule,
     MatGridListModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    ReactiveFormsModule
   ],
   exports: [
     MatToolbarModule,
@@ -67,7 +69,8 @@ import {MatNativeDateModule} from "@angular/material/core";
     MatSortModule,
     MatCardModule,
     MatGridListModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    ReactiveFormsModule
   ],
   providers: [
     MatDatepickerModule,
