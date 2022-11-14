@@ -141,15 +141,13 @@
           </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <button mat-raised-button >Limpiar</button>
+          <button mat-raised-button (click)="onClean()">Limpiar</button>
         </mat-grid-tile>
         <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <button mat-raised-button color="primary" type="submit">Agregar</button>
+          <button mat-raised-button color="primary" type="submit" [disabled]="!rentForm.valid" (click)="onAdd()">Agregar</button>
         </mat-grid-tile>
         <mat-grid-tile [colspan]="1" [rowspan]="1"></mat-grid-tile>
       </mat-grid-list>
-
-
     </form>
   </mat-card>
 </div>

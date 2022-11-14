@@ -13,72 +13,22 @@ export class RentService {
     {
       color: 'gris',
       size: 56,
-      clothes: 'saco',
-      fullName: 'Claudio Argañaraz',
+      type: 'saco',
+      name: 'Claudio Argañaraz',
       balance: 1000,
       recipeNumber: 1234,
       notes: 'debe 2000',
-      date: '10/11/2022'
+      reservationDate: '10/11/2022'
     },
     {
       color: 'azul',
       size: 54,
-      clothes: 'ambo',
-      fullName: 'Martín Grellet',
+      type: 'ambo',
+      name: 'Martín Grellet',
       balance: 0,
       recipeNumber: 4567,
       notes: '',
-      date: '10/11/2022'
-    },
-    {
-      color: 'azul',
-      size: 54,
-      clothes: 'ambo',
-      fullName: 'Martín Grellet',
-      balance: 0,
-      recipeNumber: 4567,
-      notes: '',
-      date: '10/11/2022'
-    },
-    {
-      color: 'azul',
-      size: 54,
-      clothes: 'ambo',
-      fullName: 'Martín Grellet',
-      balance: 0,
-      recipeNumber: 4567,
-      notes: '',
-      date: '10/11/2022'
-    },
-    {
-      color: 'azul',
-      size: 54,
-      clothes: 'ambo',
-      fullName: 'Martín Grellet',
-      balance: 0,
-      recipeNumber: 4567,
-      notes: '',
-      date: '10/11/2022'
-    },
-    {
-      color: 'azul',
-      size: 54,
-      clothes: 'ambo',
-      fullName: 'Martín Grellet',
-      balance: 0,
-      recipeNumber: 4567,
-      notes: '',
-      date: '10/11/2022'
-    },
-    {
-      color: 'azul',
-      size: 54,
-      clothes: 'ambo',
-      fullName: 'Martín Grellet',
-      balance: 0,
-      recipeNumber: 4567,
-      notes: '',
-      date: '10/11/2022'
+      reservationDate: '10/11/2022'
     },
   ];
 
@@ -88,5 +38,9 @@ export class RentService {
 
   deleteElement(index: number) {
     this.weeklyRentList.splice(index, 1);
+  }
+
+  addElement(rent: WeeklyRent){
+    this.weeklyRentList.unshift(rent);
   }
 }

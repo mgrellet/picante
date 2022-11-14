@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   loading = false;
 
   constructor(private formBuilder: FormBuilder,
-              private _snackBar: MatSnackBar,
+              private snackBar: MatSnackBar,
               private router: Router) {
     this.form = formBuilder.group({
       user: ['', Validators.required],
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
   }
 
   errorMessage() {
-    this._snackBar.open('login incorrecto', '', {
+    this.snackBar.open('login incorrecto', '', {
       duration: 3000
     });
   }

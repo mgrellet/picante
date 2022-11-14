@@ -11,7 +11,7 @@
   <div *ngIf="weeklyRentList.length > 0">
     <mat-form-field appearance="standard">
       <mat-label>Filter</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+      <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
     </mat-form-field>
 
     <div class="mat-elevation-z8">
@@ -29,30 +29,22 @@
           <td mat-cell *matCellDef="let element"> {{element.size}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="clothes">
+        <ng-container matColumnDef="type">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Ropa</th>
-          <td mat-cell *matCellDef="let element"> {{element.clothes}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.type}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="fullName">
+        <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre</th>
-          <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="boleta">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nº Boleta</th>
-          <td mat-cell *matCellDef="let element"> {{element.boleta}} </td>
-        </ng-container>
 
         <ng-container matColumnDef="balance">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Saldo</th>
           <td mat-cell *matCellDef="let element"> {{element.balance}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="recipeNumber">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nº Recibo</th>
-          <td mat-cell *matCellDef="let element"> {{element.recipeNumber}} </td>
-        </ng-container>
 
         <ng-container matColumnDef="notes">
           <th mat-header-cell *matHeaderCellDef mat-sort-header=""> Notas</th>

@@ -15,7 +15,7 @@ export class ReportComponent implements OnInit {
 
   weeklyRentList: WeeklyRent[] = [];
 
-  displayedColumns: string[] = ['color', 'size', 'clothes', 'fullName', 'balance', 'recipeNumber', 'notes', 'actions'];
+  displayedColumns: string[] = ['color', 'size', 'type', 'name', 'balance', 'notes', 'actions'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -36,6 +36,7 @@ export class ReportComponent implements OnInit {
 
   loadGrid() {
     this.weeklyRentList = this.rentService.getWeeklyRent();
+    console.log(this.weeklyRentList);
     this.dataSource = new MatTableDataSource(this.weeklyRentList);
   }
 
