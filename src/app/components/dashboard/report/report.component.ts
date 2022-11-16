@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {WeeklyRent} from "../../interfaces/weeklyRent";
+import {Rent} from "../../interfaces/rent";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
@@ -13,7 +13,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class ReportComponent implements OnInit {
 
-  weeklyRentList: WeeklyRent[] = [];
+  weeklyRentList: Rent[] = [];
 
   displayedColumns: string[] = ['color', 'size', 'type', 'name', 'balance', 'notes', 'actions'];
   dataSource!: MatTableDataSource<any>;

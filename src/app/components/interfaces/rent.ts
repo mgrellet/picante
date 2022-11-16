@@ -1,4 +1,5 @@
-export interface WeeklyRent {
+export interface Rent {
+  id: string;
   color: string;
   size: number;
   type: string;

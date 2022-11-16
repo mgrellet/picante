@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {RentService} from "../../../services/rent.service";
-import {WeeklyRent} from "../../interfaces/weeklyRent";
+import {Rent} from "../../interfaces/rent";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 
@@ -16,7 +16,7 @@ import {Router} from "@angular/router";
 export class MainComponent implements OnInit {
 
   rentForm: FormGroup
-  weeklyRent: WeeklyRent;
+  rent: Rent;
   addClicked: boolean
 
   constructor(private formBuilder: FormBuilder,
@@ -50,11 +50,9 @@ export class MainComponent implements OnInit {
   }
 
   addRent() {
-    console.log(this.rentForm);
     if (this.addClicked) {
-      console.log("ADD")
-
-      this.weeklyRent = {
+      this.rent = {
+        id: '',
         name: this.rentForm.value.name,
         color: this.rentForm.value.color,
         size: this.rentForm.value.size,
@@ -65,11 +63,9 @@ export class MainComponent implements OnInit {
         recipeNumber: 0,
 
       }
-      console.log("weekly rent", this.weeklyRent);
-      this.rentService.addElement(this.weeklyRent);
+      this.rentService.addElement(this.rent);
       this.showAddMessage();
     } else {
-      console.log("CLEAN")
       this.rentForm.reset()
     }
   }

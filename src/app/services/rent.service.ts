@@ -1,16 +1,18 @@
 import {Injectable} from '@angular/core';
-import {WeeklyRent} from "../components/interfaces/weeklyRent";
+import {Rent} from "../components/interfaces/rent";
+import {AngularFirestore} from "@angular/fire/compat/firestore";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RentService {
 
-  constructor() {
+  constructor(private angularFirestore: AngularFirestore) {
   }
 
-  weeklyRentList: WeeklyRent[] = [
+  weeklyRentList: Rent[] = [
     {
+      id:'',
       color: 'gris',
       size: 56,
       type: 'saco',
@@ -21,6 +23,7 @@ export class RentService {
       reservationDate: '10/11/2022'
     },
     {
+      id:'',
       color: 'azul',
       size: 54,
       type: 'ambo',
@@ -32,6 +35,55 @@ export class RentService {
     },
   ];
 
+  getRent(id: string) {
+    return this.angularFirestore
+      .collection('rent')
+      .doc(id)
+      .valueChanges();
+  }
+
+  getRentList() {
+    return this.angularFirestore
+      .collection('rent')
+      .snapshotChanges();
+  }
+
+  createRentRegistry(rent: Rent) {
+    return new Promise<any>((resolve, reject) => {
+      this.angularFirestore
+        .collection('rent')
+        .add(rent)
+        .then(response => {
+          console.log(response);
+        }, error => reject(error))
+      ;
+    })
+  }
+
+  deleteRentRegistry(rent: Rent) {
+    this.angularFirestore
+      .collection('rent')
+      .doc(rent.id)
+      .delete().then(r => console.log(r));
+  }
+
+  updateRentRegistry(rent: Rent, id: string) {
+    return this.angularFirestore
+      .collection('rent')
+      .doc(id)
+      .update({
+        id: id,
+        name: rent.name,
+        color: rent.color,
+        size: rent.size,
+        type: rent.type,
+        balance: rent.balance,
+        reservationDate: rent.reservationDate,
+        notes: '',
+        recipeNumber: 0,
+      })
+  }
+
   getWeeklyRent() {
     return this.weeklyRentList.slice();
   }
@@ -40,7 +92,7 @@ export class RentService {
     this.weeklyRentList.splice(index, 1);
   }
 
-  addElement(rent: WeeklyRent){
+  addElement(rent: Rent) {
     this.weeklyRentList.unshift(rent);
   }
 }
