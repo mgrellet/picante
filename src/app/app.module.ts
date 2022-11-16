@@ -7,6 +7,9 @@ import {LoginComponent} from './components/login/login.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {LayoutModule} from '@angular/cdk/layout';
 import {SharedModule} from "./components/shared/shared.module";
+import {AngularFireModule} from "@angular/fire/compat";
+import {environment} from "../environments/environment";
+import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 
 
 @NgModule({
@@ -20,7 +23,9 @@ import {SharedModule} from "./components/shared/shared.module";
     BrowserAnimationsModule,
     LayoutModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
