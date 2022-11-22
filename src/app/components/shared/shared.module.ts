@@ -20,6 +20,7 @@ import {MatSortModule} from "@angular/material/sort";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {ReactiveFormsModule} from "@angular/forms";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     MatGridListModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FlexLayoutModule
   ],
   exports: [
     MatToolbarModule,
@@ -70,7 +72,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     MatCardModule,
     MatGridListModule,
     MatDatepickerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FlexLayoutModule
   ],
   providers: [
     MatDatepickerModule,

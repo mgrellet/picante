@@ -7,14 +7,16 @@ import {DashboardComponent} from "./dashboard.component";
 import {NavbarComponent} from './navbar/navbar.component';
 import {MainComponent} from './main/main.component';
 import {ReportComponent} from './report/report.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     NavbarComponent,
+    SidenavComponent,
     MainComponent,
-    ReportComponent
+    ReportComponent,
   ],
   imports: [
     CommonModule,

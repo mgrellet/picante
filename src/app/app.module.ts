@@ -15,7 +15,7 @@ import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

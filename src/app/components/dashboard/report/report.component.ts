@@ -15,13 +15,13 @@ export class ReportComponent implements OnInit {
 
   weeklyRentList: Rent[] = [];
 
-  displayedColumns: string[] = ['color', 'size', 'type', 'name', 'balance', 'notes', 'actions'];
+  displayedColumns: string[] = ['name', 'color', 'size', 'type', 'balance', 'notes', 'actions'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private rentService: RentService, private _snackBar: MatSnackBar,) {
+  constructor(private rentService: RentService, private snackBar: MatSnackBar,) {
   }
 
   ngOnInit(): void {
@@ -47,9 +47,16 @@ export class ReportComponent implements OnInit {
 
   deleteElement(index: number) {
     this.rentService.deleteElement(index);
-    this._snackBar.open('Registro de alquiler eliminado', '', {
+    this.snackBar.open('Registro de alquiler eliminado', '', {
       duration: 2000
     });
     this.loadGrid();
+  }
+
+  deleteRentRecord(rent: Rent){
+    this.rentService.deleteRentRegistry(rent);
+    this.snackBar.open('Registro de alquiler eliminado', '', {
+      duration: 2000
+    });
   }
 }

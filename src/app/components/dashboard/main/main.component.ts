@@ -41,13 +41,12 @@ export class MainComponent implements OnInit {
       giveDate: ['', Validators.required],
       returnDate: ['', Validators.required],
       price: ['', Validators.required],
-      advancePayment: ['', Validators.required],
+      prePayment: ['', Validators.required],
       balance: ['', Validators.required]
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   addRent() {
     if (this.addClicked) {
@@ -64,6 +63,7 @@ export class MainComponent implements OnInit {
 
       }
       this.rentService.addElement(this.rent);
+      this.rentService.createRentRegistry(this.rent).then();
       this.showAddMessage();
     } else {
       this.rentForm.reset()

@@ -19,6 +19,11 @@
              matSort
              aria-describedby="weekly rent list">
 
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre</th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
         <ng-container matColumnDef="color">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Color</th>
           <td mat-cell *matCellDef="let element"> {{element.color}} </td>
@@ -32,11 +37,6 @@
         <ng-container matColumnDef="type">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Ropa</th>
           <td mat-cell *matCellDef="let element"> {{element.type}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre</th>
-          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
         </ng-container>
 
 
