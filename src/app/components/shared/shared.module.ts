@@ -20,57 +20,42 @@ import {MatSortModule} from "@angular/material/sort";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {ReactiveFormsModule} from "@angular/forms";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
+const modules = [
+  CommonModule,
+  MatToolbarModule,
+  MatButtonModule,
+  MatSidenavModule,
+  MatIconModule,
+  MatListModule,
+  MatGridListModule,
+  MatCardModule,
+  MatMenuModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSnackBarModule,
+  MatProgressSpinnerModule,
+  HttpClientModule,
+  MatTableModule,
+  MatTooltipModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatCardModule,
+  MatGridListModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  ReactiveFormsModule,
+  FlexLayoutModule
+]
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSnackBarModule,
-    MatProgressSpinnerModule,
-    HttpClientModule,
-    MatTableModule,
-    MatTooltipModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatCardModule,
-    MatGridListModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    ReactiveFormsModule
+    [...modules]
   ],
   exports: [
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSnackBarModule,
-    MatProgressSpinnerModule,
-    HttpClientModule,
-    MatTableModule,
-    MatTooltipModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatCardModule,
-    MatGridListModule,
-    MatDatepickerModule,
-    ReactiveFormsModule
+    [...modules]
   ],
   providers: [
     MatDatepickerModule,
