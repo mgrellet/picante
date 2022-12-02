@@ -4,7 +4,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LoginComponent} from './components/login/login.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {LayoutModule} from '@angular/cdk/layout';
 import {SharedModule} from "./components/shared/shared.module";
 import {AngularFireModule} from "@angular/fire/compat";
@@ -24,11 +23,9 @@ import { SignupComponent } from './components/login/signup/signup.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
-    ReactiveFormsModule,
     SharedModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule,
-    FormsModule
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

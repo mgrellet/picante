@@ -19,8 +19,9 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 const modules = [
   CommonModule,
@@ -46,7 +47,9 @@ const modules = [
   MatDatepickerModule,
   MatNativeDateModule,
   ReactiveFormsModule,
-  FlexLayoutModule
+  FlexLayoutModule,
+  FormsModule,
+  MatCheckboxModule
 ]
 
 @NgModule({
