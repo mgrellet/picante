@@ -22,6 +22,8 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import { HeaderComponent } from '../navigation/header/header.component';
+import { SidenavListComponent } from '../navigation/sidenav-list/sidenav-list.component';
 
 const modules = [
   CommonModule,
@@ -49,16 +51,22 @@ const modules = [
   ReactiveFormsModule,
   FlexLayoutModule,
   FormsModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatSidenavModule
 ]
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    HeaderComponent,
+    SidenavListComponent
+  ],
   imports: [
     [...modules]
   ],
   exports: [
-    [...modules]
+    [...modules],
+    SidenavListComponent,
+    HeaderComponent
   ],
   providers: [
     MatDatepickerModule,

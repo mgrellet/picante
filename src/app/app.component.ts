@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'marquez-test';
+  title = 'Marquez Trajes';
+  openSidenav: boolean = false;
+
+  onToggle() {
+
+  }
 }

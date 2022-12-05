@@ -1,0 +1,38 @@
+<mat-toolbar color="primary">
+  <div fxHide.gt-xs> <!-- hide for larger than small screens -->
+    <button mat-icon-button (click)="onToggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button><!-- -->
+  </div>
+  <div>
+    <a routerLink="/">LOGO</a>
+  </div>
+  <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs> <!-- hide in small screens -->
+    <ul fxLayout fxLayoutGap="1em" class="navigation-items">
+      <li>
+        <a routerLink="/signup">
+          <mat-icon>face</mat-icon>
+          <span class="nav-caption">Registrarse</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/dashboard">
+          <mat-icon>person_add</mat-icon>
+          <span class="nav-caption">Carga Alquiler</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/dashboard/reportes">
+          <mat-icon>view_week</mat-icon>
+          <span class="nav-caption">Reporte</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/logout">
+          <mat-icon>exit_to_app</mat-icon>
+          <span class="nav-caption">Desloguease</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</mat-toolbar>
