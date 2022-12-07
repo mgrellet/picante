@@ -8,7 +8,7 @@ import {ReportComponent} from "./report/report.component";
 const routes: Routes = [
   {path: '', component: DashboardComponent, children:[
       {path: '', component: MainComponent},
-      {path: 'reportes', component: ReportComponent}
+      {path: 'reports', component: ReportComponent}
     ]},
 ];
 

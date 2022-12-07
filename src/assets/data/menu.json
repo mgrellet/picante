@@ -1,10 +1,22 @@
 [
   {
+    "name": "Registrarse",
+    "icon": "face",
+    "redirect": "/signup"
+  },
+  {
     "name": "Carga Trajes",
+    "icon": "person_add",
     "redirect": "/dashboard"
   },
   {
     "name": "Reporte",
-    "redirect": "/dashboard/reportes"
+    "icon": "view_week",
+    "redirect": "/dashboard/reports"
+  },
+  {
+    "name": "Desloguearse",
+    "icon": "exit_to_app",
+    "redirect": "/logout"
   }
 ]

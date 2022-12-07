@@ -10,27 +10,10 @@
   <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs> <!-- hide in small screens -->
     <ul fxLayout fxLayoutGap="1em" class="navigation-items">
       <li>
-        <a routerLink="/signup">
-          <mat-icon>face</mat-icon>
-          <span class="nav-caption">Registrarse</span>
-        </a>
-      </li>
-      <li>
-        <a routerLink="/dashboard">
-          <mat-icon>person_add</mat-icon>
-          <span class="nav-caption">Carga Alquiler</span>
-        </a>
-      </li>
-      <li>
-        <a routerLink="/dashboard/reportes">
-          <mat-icon>view_week</mat-icon>
-          <span class="nav-caption">Reporte</span>
-        </a>
-      </li>
-      <li>
-        <a routerLink="/logout">
-          <mat-icon>exit_to_app</mat-icon>
-          <span class="nav-caption">Desloguease</span>
+        <a *ngFor="let item of menu"
+           [routerLink]="item.redirect">
+          <mat-icon>{{item.icon}}</mat-icon>
+          <span class="nav-caption">{{item.name}}</span>
         </a>
       </li>
     </ul>

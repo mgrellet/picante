@@ -24,6 +24,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { HeaderComponent } from '../navigation/header/header.component';
 import { SidenavListComponent } from '../navigation/sidenav-list/sidenav-list.component';
+import {RouterLinkWithHref} from "@angular/router";
 
 const modules = [
   CommonModule,
@@ -61,7 +62,8 @@ const modules = [
     SidenavListComponent
   ],
   imports: [
-    [...modules]
+    [...modules],
+    RouterLinkWithHref
   ],
   exports: [
     [...modules],

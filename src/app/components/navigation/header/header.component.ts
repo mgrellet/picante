@@ -1,4 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Menu} from "../../interfaces/menu";
+import {MenuService} from "../../../services/menu.service";
 
 @Component({
   selector: 'app-header',
@@ -8,10 +10,19 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 export class HeaderComponent implements OnInit {
   @Output() sidenavToggle = new EventEmitter<void>(); //will create and output to emit
 
-  constructor() {
+  menu: Menu[] = [];
+
+  constructor(private menuService: MenuService) {
   }
 
   ngOnInit(): void {
+    this.loadMenu();
+  }
+
+  loadMenu() {
+    this.menuService.getMenu().subscribe(items => {
+      this.menu = items;
+    })
   }
 
   onToggleSidenav() {
