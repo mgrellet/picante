@@ -12,7 +12,6 @@
       <li>
         <a *ngFor="let item of menu"
            [routerLink]="item.redirect">
-          <mat-icon>{{item.icon}}</mat-icon>
           <span class="nav-caption">{{item.name}}</span>
         </a>
       </li>

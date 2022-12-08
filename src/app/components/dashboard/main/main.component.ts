@@ -4,6 +4,9 @@ import {RentService} from "../../../services/rent.service";
 import {Rent} from "../../interfaces/rent";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
+import {DatePipe} from "@angular/common";
+import {MatDialog} from "@angular/material/dialog";
+import {SaveRentDialogComponent} from "./save-rent-dialog";
 
 
 @Component({
@@ -17,12 +20,19 @@ export class MainComponent implements OnInit {
 
   rentForm: FormGroup
   rent: Rent;
-  addClicked: boolean
+  addClicked: boolean;
+  today: Date;
 
+  foods: any[] = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'},
+  ];
   constructor(private formBuilder: FormBuilder,
               private rentService: RentService,
               private snackBar: MatSnackBar,
-              private router: Router) {
+              private router: Router,
+              private dialog: MatDialog) {
     this.rentForm = formBuilder.group({
       dni: ['', Validators.required],
       name: ['', Validators.required],
@@ -49,7 +59,10 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addRent() {
+  addRent(){
+    this.dialog.open(SaveRentDialogComponent);
+  }
+  saveRent() {
     if (this.addClicked) {
       this.rent = {
         id: '',
@@ -80,12 +93,21 @@ export class MainComponent implements OnInit {
     this.rentForm.reset();
   }
 
-  public onAdd(): void {
+  onAdd(): void {
     this.addClicked = true;
   }
 
-  public onClean(): void {
+  onClean(): void {
     this.addClicked = false;
   }
 
+  getTodaysDate() {
+    this.today = new Date();
+    const dd = String(this.today.getDate()).padStart(2, '0');
+    const mm = String(this.today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    const yyyy = this.today.getFullYear();
+    this.today.getHours();
+    const localHour = new DatePipe('en-Us').transform(this.today, 'HH:mm:ss', 'GMT-3');
+    return `Fecha de carga: ${dd} del ${mm} de ${yyyy} horas ${localHour}`;
+  }
 }

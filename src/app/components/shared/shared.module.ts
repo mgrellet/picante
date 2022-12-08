@@ -25,6 +25,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import { HeaderComponent } from '../navigation/header/header.component';
 import { SidenavListComponent } from '../navigation/sidenav-list/sidenav-list.component';
 import {RouterLinkWithHref} from "@angular/router";
+import {MatSelectModule} from "@angular/material/select";
+import {MatDialogModule} from "@angular/material/dialog";
 
 const modules = [
   CommonModule,
@@ -53,7 +55,9 @@ const modules = [
   FlexLayoutModule,
   FormsModule,
   MatCheckboxModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatSelectModule,
+  MatDialogModule,
 ]
 
 @NgModule({

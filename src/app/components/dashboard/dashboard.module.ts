@@ -7,6 +7,7 @@ import {DashboardComponent} from "./dashboard.component";
 import {NavbarComponent} from './navbar/navbar.component';
 import {MainComponent} from './main/main.component';
 import {ReportComponent} from './report/report.component';
+import {SaveRentDialogComponent} from "./main/save-rent-dialog";
 
 
 @NgModule({
@@ -14,12 +15,13 @@ import {ReportComponent} from './report/report.component';
     DashboardComponent,
     NavbarComponent,
     MainComponent,
-    ReportComponent
+    ReportComponent,
+    SaveRentDialogComponent
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    SharedModule,
+    SharedModule
   ]
 })
 export class DashboardModule {

@@ -10,6 +10,7 @@ import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../environments/environment";
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 import { SignupComponent } from './components/login/signup/signup.component';
+import {SaveRentDialogComponent} from "./components/dashboard/main/save-rent-dialog";
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { SignupComponent } from './components/login/signup/signup.component';
     AngularFirestoreModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[SaveRentDialogComponent]
 })
 export class AppModule {
 }
