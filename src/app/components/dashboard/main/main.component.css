@@ -1,16 +1,20 @@
-.form-field-width-big{
-  width: 80%;
-}
-
-.form-field-width-medium{
-  width: 50%;
-}
-
-.form-field-width-small{
-  width: 30%;
-}
-
 .rentLayout{
   text-align: center;
   padding: 2em;
 }
+
+mat-form-field {
+  width: 100%;
+  padding: 1em;
+}
+
+.section-element {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+.check-box-margin {
+  margin: 0 10px;
+}
+

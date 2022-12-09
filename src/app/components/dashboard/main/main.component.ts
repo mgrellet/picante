@@ -28,6 +28,18 @@ export class MainComponent implements OnInit {
     {value: 'pizza-1', viewValue: 'Pizza'},
     {value: 'tacos-2', viewValue: 'Tacos'},
   ];
+
+  suiteSizes: number[] = [
+    40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62
+  ]
+
+  suiteColors: string[] = [
+    'Gris', 'Gris topo', 'Negro', 'Azul francia', 'Azul oscuro', 'Blanco'
+  ]
+  shirt: boolean;
+  tie: boolean;
+  vest: boolean;
+
   constructor(private formBuilder: FormBuilder,
               private rentService: RentService,
               private snackBar: MatSnackBar,
@@ -59,9 +71,10 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addRent(){
+  addRent() {
     this.dialog.open(SaveRentDialogComponent);
   }
+
   saveRent() {
     if (this.addClicked) {
       this.rent = {
