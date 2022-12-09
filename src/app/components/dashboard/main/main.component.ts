@@ -72,7 +72,23 @@ export class MainComponent implements OnInit {
   }
 
   addRent() {
-    this.dialog.open(SaveRentDialogComponent);
+    this.rent = {
+      id: '',
+      name: this.rentForm.value.name,
+      color: this.rentForm.value.color,
+      size: this.rentForm.value.size,
+      type: this.rentForm.value.type,
+      balance: this.rentForm.value.balance,
+      reservationDate: this.rentForm.value.reservationDate,
+      notes: '',
+      recipeNumber: 0,
+    }
+    const dialogRef = this.dialog.open(SaveRentDialogComponent, {
+      data: this.rent
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("result", result)// if true, save in DB, if false, if not, return
+    })
   }
 
   saveRent() {
@@ -87,7 +103,6 @@ export class MainComponent implements OnInit {
         reservationDate: this.rentForm.value.reservationDate,
         notes: '',
         recipeNumber: 0,
-
       }
       this.rentService.addElement(this.rent);
       this.showAddMessage();
