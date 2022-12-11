@@ -9,29 +9,46 @@
   </div>
   <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs> <!-- hide in small screens -->
     <ul fxLayout fxLayoutGap="1em" class="navigation-items">
-      <li *ngIf = "!isAuth" >
+      <li *ngIf="!isAuth">
         <a routerLink="/signup">
-         <span class="nav-caption">Registrarse</span>
+         <span class="nav-caption">
+           <mat-icon matTooltip="Registrarse">account_circle</mat-icon>
+         </span>
         </a>
       </li>
 
-      <li *ngIf = "!isAuth" >
+      <li *ngIf="!isAuth">
         <a routerLink="/login">
-          <span class="nav-caption">Entrar</span>
+          <span class="nav-caption">
+            <mat-icon matTooltip="Entrar">login</mat-icon>
+          </span>
         </a>
       </li>
 
-      <li *ngIf = "isAuth" >
+      <li *ngIf="isAuth">
         <a routerLink="/dashboard">
-          <span class="nav-caption">Carga Trajes</span>
+          <span class="nav-caption">
+            <mat-icon matTooltip="Cargar alquiler">person_add_alt</mat-icon>
+          </span>
         </a>
       </li>
 
-      <li *ngIf = "isAuth" >
+      <li *ngIf="isAuth">
         <a routerLink="/dashboard/reports">
-          <span class="nav-caption">Reporte</span>
+          <span class="nav-caption">
+            <mat-icon matTooltip="Reporte semanal">summarize</mat-icon>
+          </span>
         </a>
       </li>
+
+      <li *ngIf="isAuth">
+        <a routerLink="/logout">
+          <span class="nav-caption">
+            <mat-icon matTooltip="Desloguearse">logout</mat-icon>
+          </span>
+        </a>
+      </li>
+
     </ul>
   </div>
 </mat-toolbar>
