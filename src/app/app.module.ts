@@ -11,6 +11,7 @@ import {environment} from "../environments/environment";
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 import { SignupComponent } from './components/login/signup/signup.component';
 import {SaveRentDialogComponent} from "./components/dashboard/main/save-rent-dialog";
+import {AuthService} from "./components/login/auth/auth.service";
 
 
 @NgModule({
@@ -28,7 +29,7 @@ import {SaveRentDialogComponent} from "./components/dashboard/main/save-rent-dia
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule
   ],
-  providers: [],
+  providers: [AuthService], //same instance in whole app
   bootstrap: [AppComponent],
   entryComponents:[SaveRentDialogComponent]
 })

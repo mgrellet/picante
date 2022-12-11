@@ -9,10 +9,27 @@
   </div>
   <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs> <!-- hide in small screens -->
     <ul fxLayout fxLayoutGap="1em" class="navigation-items">
-      <li>
-        <a *ngFor="let item of menu"
-           [routerLink]="item.redirect">
-          <span class="nav-caption">{{item.name}}</span>
+      <li *ngIf = "!isAUth" >
+        <a routerLink="/signup">
+         <span class="nav-caption">Registrarse</span>
+        </a>
+      </li>
+
+      <li *ngIf = "!isAUth" >
+        <a routerLink="/login">
+          <span class="nav-caption">Entrar</span>
+        </a>
+      </li>
+
+      <li *ngIf = "isAUth" >
+        <a routerLink="/dashboard">
+          <span class="nav-caption">Carga Trajes</span>
+        </a>
+      </li>
+
+      <li *ngIf = "isAUth" >
+        <a routerLink="/dashboard/reports">
+          <span class="nav-caption">Reporte</span>
         </a>
       </li>
     </ul>

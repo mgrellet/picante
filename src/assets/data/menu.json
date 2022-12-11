@@ -3,7 +3,11 @@
     "name": "Registrarse",
     "icon": "face",
     "redirect": "/signup"
-  },
+  },{
+  "name": "Entrar",
+  "icon": "accessibility",
+  "redirect": "/login"
+},
   {
     "name": "Carga Trajes",
     "icon": "person_add",
