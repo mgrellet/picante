@@ -1,22 +1,22 @@
 <mat-nav-list>
-  <!--
-  <a  *ngIf = "!isAUth" mat-list-item routerLink="/signup">
+
+  <a *ngIf = "!isAuth" mat-list-item routerLink="/signup">
     <mat-icon>face</mat-icon>
-    <span class="nav-caption"></span>
+    <span class="nav-caption">Registrarse</span>
   </a>
 
-  <a *ngIf = "!isAUth" mat-list-item routerLink="/login">
+  <a *ngIf = "!isAuth" mat-list-item routerLink="/login">
     <mat-icon>accessibility</mat-icon>
-    <span class="nav-caption"></span>
+    <span class="nav-caption">Entrar</span>
   </a>
 
-  <a *ngIf = "isAUth" mat-list-item routerLink="/dashboard">
+  <a *ngIf = "isAuth" mat-list-item routerLink="/dashboard">
     <mat-icon>person_add</mat-icon>
-    <span class="nav-caption"></span>
+    <span class="nav-caption">Carga Alquiler</span>
   </a>
 
-  <a *ngIf = "isAUth" mat-list-item routerLink="/dashboard/reports">
+  <a *ngIf = "isAuth" mat-list-item routerLink="/dashboard/reports">
     <mat-icon>view_week</mat-icon>
-    <span class="nav-caption"></span>
-  </a>-->
+    <span class="nav-caption">Reporte</span>
+  </a>
 </mat-nav-list>

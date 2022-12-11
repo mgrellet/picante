@@ -9,25 +9,25 @@
   </div>
   <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs> <!-- hide in small screens -->
     <ul fxLayout fxLayoutGap="1em" class="navigation-items">
-      <li *ngIf = "!isAUth" >
+      <li *ngIf = "!isAuth" >
         <a routerLink="/signup">
          <span class="nav-caption">Registrarse</span>
         </a>
       </li>
 
-      <li *ngIf = "!isAUth" >
+      <li *ngIf = "!isAuth" >
         <a routerLink="/login">
           <span class="nav-caption">Entrar</span>
         </a>
       </li>
 
-      <li *ngIf = "isAUth" >
+      <li *ngIf = "isAuth" >
         <a routerLink="/dashboard">
           <span class="nav-caption">Carga Trajes</span>
         </a>
       </li>
 
-      <li *ngIf = "isAUth" >
+      <li *ngIf = "isAuth" >
         <a routerLink="/dashboard/reports">
           <span class="nav-caption">Reporte</span>
         </a>

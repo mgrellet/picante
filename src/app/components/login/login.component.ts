@@ -31,19 +31,6 @@ export class LoginComponent implements OnInit {
       email: this.form.value.user,
       password: this.form.value.password
     })
-
-    const user = this.form.value.user;
-    const pass = this.form.value.password;
-
-    if (user === 'mgrellet' && pass === '123') {
-      this.loading = true;
-      setTimeout(() => {
-        this.router.navigate(['dashboard']);
-      }, 1500)
-    } else {
-      this.form.reset();
-      this.errorMessage();
-    }
   }
 
   errorMessage() {
