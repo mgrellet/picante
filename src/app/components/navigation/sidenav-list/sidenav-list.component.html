@@ -20,7 +20,7 @@
     <span class="nav-caption">Reporte</span>
   </a>
 
-  <a *ngIf = "isAuth" mat-list-item routerLink="/login">
+  <a *ngIf = "isAuth" mat-list-item style="cursor: pointer" (click)="onLogout()">
     <mat-icon>logout</mat-icon>
     <span class="nav-caption">Desloguearse</span>
   </a>

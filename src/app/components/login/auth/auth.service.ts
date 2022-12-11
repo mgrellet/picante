@@ -35,7 +35,7 @@ export class AuthService {
       userId: ''
     }
     this.authChange.next(false);
-
+    this.router.navigate(['/login']);
   }
 
   getUser() {
