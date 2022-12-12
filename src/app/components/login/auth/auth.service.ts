@@ -42,10 +42,11 @@ export class AuthService {
     return {...this.user};
   }
 
-  /*isAuth(){
-    console.log("isAuth?",this.user !== '' && this.user.email !== '' );
-    return this.user.userId !== '' && this.user.email !== '';
-}*/
+  isAuth(){
+    let isUserAuthenticated = !this.user || (this.user.userId !== '' && this.user.email !== '');
+    console.log("isAuth?", isUserAuthenticated);
+    return isUserAuthenticated;
+}
 
   mockUser(authData: AuthData) {
     this.user = {

@@ -1,2 +1,122 @@
-<!--<app-navbar></app-navbar>-->
-<router-outlet></router-outlet><!-- child routing -->
+<section class="rentLayout" fxLayout fxLayoutAlign="center">
+  <form [formGroup]="rentForm" (ngSubmit)="addRent()">
+
+    <mat-card fxFlex.lt-lg="100%" fxFlex="90em">
+      <mat-card-title  fxLayoutAlign="center">Carga de alquiler de traje</mat-card-title>
+
+      <mat-card-content >
+
+        <mat-form-field >
+          <mat-label>D.N.I</mat-label>
+          <input matInput autocomplete="off" formControlName="dni">
+        </mat-form-field>
+
+        <mat-form-field >
+          <mat-label>Señor(es)</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Telefono</mat-label>
+          <input matInput formControlName="phone">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Domicilio</mat-label>
+          <input matInput formControlName="address">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Fecha de reserva</mat-label>
+          <input matInput [matDatepicker]="reservationdate" formControlName="reservationDate">
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="reservationdate"></mat-datepicker-toggle>
+          <mat-datepicker #reservationdate></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Un</mat-label>
+          <input matInput formControlName="type">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Talle</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let size of suiteSizes" [value]="size">
+              {{size}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Modelo</mat-label>
+          <input matInput formControlName="model">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Color</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let color of suiteColors" [value]="color">
+              {{color}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-checkbox class="check-box-margin" formControlName="shirt">Camisa</mat-checkbox>
+
+        <mat-checkbox class="check-box-margin" formControlName="tie">Corbata</mat-checkbox>
+
+        <mat-checkbox class="check-box-margin" formControlName="vest">Chaleco</mat-checkbox>
+
+        <mat-form-field>
+          <mat-label>Fecha de prueba</mat-label>
+          <input matInput [matDatepicker]="trydate" formControlName="tryDate">
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="trydate"></mat-datepicker-toggle>
+          <mat-datepicker #trydate></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Fecha de entrega</mat-label>
+          <input matInput [matDatepicker]="givedate" formControlName="giveDate">
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="givedate"></mat-datepicker-toggle>
+          <mat-datepicker #givedate></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Fecha de devolución</mat-label>
+          <input matInput [matDatepicker]="returndate" formControlName="returnDate">
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="returndate"></mat-datepicker-toggle>
+          <mat-datepicker #returndate></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Precio total</mat-label>
+          <input matInput formControlName="price">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>anticipo</mat-label>
+          <input matInput formControlName="advancePayment">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Saldo a retirar</mat-label>
+          <input matInput formControlName="balance">
+        </mat-form-field>
+
+      </mat-card-content>
+      <mat-card-actions fxLayoutAlign="center">
+        <button type="submit" mat-button>Guardar</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+
+</section>

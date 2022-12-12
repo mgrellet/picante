@@ -1,9 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Rent} from "../../interfaces/rent";
+import {Rent} from "../interfaces/rent";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
-import {RentService} from "../../../services/rent.service";
+import {RentService} from "../../services/rent.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({

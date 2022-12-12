@@ -10,15 +10,20 @@ import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../environments/environment";
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 import { SignupComponent } from './components/login/signup/signup.component';
-import {SaveRentDialogComponent} from "./components/dashboard/main/save-rent-dialog";
 import {AuthService} from "./components/login/auth/auth.service";
+import {DashboardComponent} from "./components/dashboard/dashboard.component";
+import {ReportComponent} from "./components/report/report.component";
+import {SaveRentDialogComponent} from "./components/dashboard/save-rent-dialog.component";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    DashboardComponent,
+    ReportComponent,
+    SaveRentDialogComponent
   ],
   imports: [
     BrowserModule,
