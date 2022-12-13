@@ -43,9 +43,7 @@ export class AuthService {
   }
 
   isAuth(){
-    let isUserAuthenticated = !this.user || (this.user.userId !== '' && this.user.email !== '');
-    console.log("isAuth?", isUserAuthenticated);
-    return isUserAuthenticated;
+    return this.user!== undefined;
 }
 
   mockUser(authData: AuthData) {
