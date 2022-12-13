@@ -4,8 +4,8 @@ export interface Rent {
   size: number;
   type: string;
   name: string;
-  balance: number;
-  recipeNumber: number;
-  notes: string;
+  balance?: number;
+  recipeNumber?: number;
+  notes?: string;
   reservationDate: string;
 }

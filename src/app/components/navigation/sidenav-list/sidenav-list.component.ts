@@ -1,6 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Menu} from "../../interfaces/menu";
-import {MenuService} from "../../../services/menu.service";
 import {AuthService} from "../../login/auth/auth.service";
 import {Subscription} from "rxjs";
 
@@ -15,7 +14,7 @@ export class SidenavListComponent implements OnInit, OnDestroy {
   isAuth: boolean;
   authSubscription: Subscription;
 
-  constructor(private menuService: MenuService, private authService: AuthService) {
+  constructor(private authService: AuthService) {
   }
 
   ngOnDestroy(): void {
@@ -24,15 +23,8 @@ export class SidenavListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.authSubscription = this.authService.authChange.subscribe(authStatus => {
-      console.log("authstatus:", authStatus)
       this.isAuth = authStatus;//true or false
     });
-  }
-
-  loadMenu() {
-    this.menuService.getMenu().subscribe(items => {
-      this.menu = items;
-    })
   }
 
   onLogout() {

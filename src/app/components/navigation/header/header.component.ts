@@ -1,6 +1,5 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {Menu} from "../../interfaces/menu";
-import {MenuService} from "../../../services/menu.service";
 import {AuthService} from "../../login/auth/auth.service";
 import {Subscription} from "rxjs";
 
@@ -15,7 +14,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   authSubscription: Subscription;
   menu: Menu[] = [];
 
-  constructor(private menuService: MenuService, private authService: AuthService) {
+  constructor(private authService: AuthService) {
   }
 
   ngOnDestroy(): void {
@@ -26,12 +25,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authSubscription = this.authService.authChange.subscribe(authStatus => {
       this.isAuth = authStatus;//true or false
     });
-  }
-
-  loadMenu() {
-    this.menuService.getMenu().subscribe(items => {
-      this.menu = items;
-    })
   }
 
   onToggleSidenav() {
