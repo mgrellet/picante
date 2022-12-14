@@ -1,11 +1,26 @@
 export interface Rent {
+  //client info
   id: string;
-  color: string;
-  size: number;
-  type: string;
+  dni: number
   name: string;
-  balance?: number;
-  recipeNumber?: number;
-  notes?: string;
+  email: string;
+  phone: number;
+  address: string;
+  //reservation info
   reservationDate: string;
+  tryDate: string;
+  deliveryDate: string;
+  returnDate: string;
+  price: number;
+  advancePayment: number;
+  balance: number;
+  notes?: string;
+  //rent details
+  type: string;
+  size: number;
+  model: string;
+  color: string;
+  shirt: boolean;
+  tie: boolean;
+  vest: boolean;
 }

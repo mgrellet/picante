@@ -27,33 +27,29 @@ export class DashboardComponent implements OnInit {
               private router: Router,
               private dialog: MatDialog) {
     this.rentForm = formBuilder.group({
-      dni: ['', Validators.required],
-      name: ['', Validators.required],
-      email: ['', Validators.required],
-      phone: ['', Validators.required],
-      address: ['', Validators.required],
-      reservationDate: ['', Validators.required],
-      type: ['', Validators.required],
-      size: ['', Validators.required],
-      model: ['', Validators.required],
-      color: ['', Validators.required],
-      shirt: ['', Validators.required],
-      tie: ['', Validators.required],
-      vest: ['', Validators.required],
-      tryDate: ['', Validators.required],
-      giveDate: ['', Validators.required],
-      returnDate: ['', Validators.required],
-      price: ['', Validators.required],
-      advancePayment: ['', Validators.required],
-      balance: ['', Validators.required]
+      dni: this.rentForm.value.dni,
+      name: this.rentForm.value.name,
+      email: this.rentForm.value.email,
+      phone: this.rentForm.value.phone,
+      address: this.rentForm.value.address,
+      reservationDate: this.rentForm.value.reservationDate,
+      type: this.rentForm.value.type,
+      size: this.rentForm.value.size,
+      model: this.rentForm.value.model,
+      color: this.rentForm.value.color,
+      shirt: this.rentForm.value.shirt,
+      tie: this.rentForm.value.tie,
+      vest: this.rentForm.value.vest,
+      tryDate: this.rentForm.value.tryDate,
+      deliveryDate: this.rentForm.value.deliveryDate,
+      returnDate: this.rentForm.value.returnDate,
+      price: this.rentForm.value.price,
+      advancePayment: this.rentForm.value.advancePayment,
+      balance: this.rentForm.value.balance,
+      notes: this.rentForm.value.notes
+
     });
   }
-
-  foods: any[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'},
-  ];
 
   suiteSizes: number[] = [
     40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62
@@ -71,14 +67,26 @@ export class DashboardComponent implements OnInit {
   addRent() {
     this.rent = {
       id: '',
+      dni: this.rentForm.value.dni,
       name: this.rentForm.value.name,
-      color: this.rentForm.value.color,
-      size: this.rentForm.value.size,
-      type: this.rentForm.value.type,
-      balance: this.rentForm.value.balance,
+      email: this.rentForm.value.email,
+      phone: this.rentForm.value.phone,
+      address: this.rentForm.value.address,
       reservationDate: this.rentForm.value.reservationDate,
-      notes: '',
-      recipeNumber: 0,
+      type: this.rentForm.value.type,
+      size: this.rentForm.value.size,
+      model: this.rentForm.value.model,
+      color: this.rentForm.value.color,
+      shirt: this.rentForm.value.shirt,
+      tie: this.rentForm.value.tie,
+      vest: this.rentForm.value.vest,
+      tryDate: this.rentForm.value.tryDate,
+      deliveryDate: this.rentForm.value.deliveryDate,
+      returnDate: this.rentForm.value.returnDate,
+      price: this.rentForm.value.price,
+      advancePayment: this.rentForm.value.advancePayment,
+      balance: this.rentForm.value.balance,
+      notes: this.rentForm.value.notes
     }
     const dialogRef = this.dialog.open(SaveRentDialogComponent, {
       data: this.rent
@@ -92,14 +100,26 @@ export class DashboardComponent implements OnInit {
     if (this.addClicked) {
       this.rent = {
         id: '',
+        dni: this.rentForm.value.dni,
         name: this.rentForm.value.name,
-        color: this.rentForm.value.color,
-        size: this.rentForm.value.size,
-        type: this.rentForm.value.type,
-        balance: this.rentForm.value.balance,
+        email: this.rentForm.value.email,
+        phone: this.rentForm.value.phone,
+        address: this.rentForm.value.address,
         reservationDate: this.rentForm.value.reservationDate,
-        notes: '',
-        recipeNumber: 0,
+        type: this.rentForm.value.type,
+        size: this.rentForm.value.size,
+        model: this.rentForm.value.model,
+        color: this.rentForm.value.color,
+        shirt: this.rentForm.value.shirt,
+        tie: this.rentForm.value.tie,
+        vest: this.rentForm.value.vest,
+        tryDate: this.rentForm.value.tryDate,
+        deliveryDate: this.rentForm.value.deliveryDate,
+        returnDate: this.rentForm.value.returnDate,
+        price: this.rentForm.value.price,
+        advancePayment: this.rentForm.value.advancePayment,
+        balance: this.rentForm.value.balance,
+        notes: this.rentForm.value.notes
       }
       this.rentService.addElement(this.rent);
       this.showAddMessage();

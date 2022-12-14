@@ -83,7 +83,7 @@
 
         <mat-form-field>
           <mat-label>Fecha de entrega</mat-label>
-          <input matInput [matDatepicker]="givedate" formControlName="giveDate">
+          <input matInput [matDatepicker]="givedate" formControlName="deliveryDate">
           <mat-hint>DD/MM/YYYY</mat-hint>
           <mat-datepicker-toggle matSuffix [for]="givedate"></mat-datepicker-toggle>
           <mat-datepicker #givedate></mat-datepicker>
@@ -110,6 +110,11 @@
         <mat-form-field>
           <mat-label>Saldo a retirar</mat-label>
           <input matInput formControlName="balance">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Notas</mat-label>
+          <input matInput formArrayName="notes">
         </mat-form-field>
 
       </mat-card-content>
