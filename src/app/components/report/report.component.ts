@@ -15,28 +15,32 @@ export class ReportComponent implements OnInit {
 
   weeklyRentList: Rent[] = [];
 
-  displayedColumns: string[] = ['color', 'size', 'type', 'name', 'balance', 'notes', 'actions'];
-  dataSource!: MatTableDataSource<any>;
+  //displayedColumns = ['color', 'size', 'type', 'name', 'balance', 'notes', 'actions'];
+  displayedColumns = ['color', 'size', 'type', 'name', 'balance', 'notes'];
+  dataSource = new MatTableDataSource<Rent>();
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  /*@ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-
-  constructor(private rentService: RentService, private _snackBar: MatSnackBar,) {
+*/
+  constructor(private rentService: RentService, private snackBar: MatSnackBar,) {
   }
 
   ngOnInit(): void {
-    this.loadGrid();
+    //this.loadGrid();
+    this.dataSource.data = this.rentService.getRentListMock();
   }
 
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    /*this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;*/
   }
 
   loadGrid() {
-    this.weeklyRentList = this.rentService.getWeeklyRent();
-    console.log(this.weeklyRentList);
+    //this.weeklyRentList = this.rentService.getWeeklyRent();
+    this.weeklyRentList = !this.rentService.getWeeklyRent().length
+      ?[]
+      :this.rentService.getWeeklyRent();
     this.dataSource = new MatTableDataSource(this.weeklyRentList);
   }
 
@@ -47,7 +51,7 @@ export class ReportComponent implements OnInit {
 
   deleteElement(index: number) {
     this.rentService.deleteElement(index);
-    this._snackBar.open('Registro de alquiler eliminado', '', {
+    this.snackBar.open('Registro de alquiler eliminado', '', {
       duration: 2000
     });
     this.loadGrid();

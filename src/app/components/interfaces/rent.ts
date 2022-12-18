@@ -7,10 +7,10 @@ export interface Rent {
   phone: number;
   address: string;
   //reservation info
-  reservationDate: string;
-  tryDate: string;
-  deliveryDate: string;
-  returnDate: string;
+  reservationDate: Date;
+  tryDate: Date;
+  deliveryDate: Date;
+  returnDate: Date;
   price: number;
   advancePayment: number;
   balance: number;

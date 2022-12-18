@@ -1,39 +1,71 @@
 import {Injectable} from '@angular/core';
 import {Rent} from "../components/interfaces/rent";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
+import {Observable, tap} from "rxjs";
+import {map} from "rxjs-compat/operator/map";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RentService {
 
+  rentList: Rent[]; // naming convention, suffix your observable with $
+
   constructor(private angularFirestore: AngularFirestore) {
   }
 
   weeklyRentList: Rent[] = [
     {
-      id:'',
-      color: 'gris',
+      id: '',
+      dni: 12345678,
+      name: 'Claudio Argarañaz',
+      email: 'c@test.com',
+      phone: 316497316497,
+      address: 'Av. los andes 123',
+      reservationDate: new Date(),
+      type: 'Saco',
       size: 56,
-      type: 'saco',
-      name: 'Claudio Argañaraz',
-      balance: 1000,
-      recipeNumber: 1234,
-      notes: 'debe 2000',
-      reservationDate: '10/11/2022'
+      model: 'regular',
+      color: 'Negro',
+      shirt: false,
+      tie: false,
+      vest: false,
+      tryDate: new Date(),
+      deliveryDate: new Date(),
+      returnDate: new Date(),
+      price: 2500,
+      advancePayment: 2500,
+      balance: 0,
+      notes: 'Se pago todo'
     },
     {
-      id:'',
-      color: 'azul',
-      size: 54,
-      type: 'ambo',
-      name: 'Martín Grellet',
-      balance: 0,
-      recipeNumber: 4567,
-      notes: '',
-      reservationDate: '10/11/2022'
+      id: '',
+      dni: 12345678,
+      name: 'El man',
+      email: 'em@test.com',
+      phone: 316497316497,
+      address: 'Av. los olivos 123',
+      reservationDate: new Date(),
+      type: 'Traje',
+      size: 52,
+      model: 'Fit',
+      color: 'Azul',
+      shirt: false,
+      tie: true,
+      vest: false,
+      tryDate: new Date(),
+      deliveryDate: new Date(),
+      returnDate: new Date(),
+      price: 5000,
+      advancePayment: 2000,
+      balance: 3000,
+      notes: 'Debe plata'
     },
   ];
+
+  getRentListMock(){
+    return this.weeklyRentList.slice();
+  }
 
   getRent(id: string) {
     return this.angularFirestore
@@ -43,9 +75,15 @@ export class RentService {
   }
 
   getRentList() {
-    return this.angularFirestore
-      .collection('rent')
-      .snapshotChanges();
+    this.angularFirestore
+      .collection<Rent>('rent')
+      .valueChanges()
+      .pipe(
+        tap(res => {
+          this.rentList = res;
+        })
+      ).subscribe();
+
   }
 
   createRentRegistry(rent: Rent) {
@@ -85,7 +123,7 @@ export class RentService {
   }
 
   getWeeklyRent() {
-    return this.weeklyRentList.slice();
+    return this.rentList;
   }
 
   deleteElement(index: number) {

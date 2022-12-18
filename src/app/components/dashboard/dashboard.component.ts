@@ -15,38 +15,43 @@ import {SaveRentDialogComponent} from "./save-rent-dialog.component";
 })
 export class DashboardComponent implements OnInit {
 
-
   rentForm: FormGroup
   rent: Rent;
   addClicked: boolean;
   today: Date;
+
+  ngOnInit(): void {
+
+  }
 
   constructor(private formBuilder: FormBuilder,
               private rentService: RentService,
               private snackBar: MatSnackBar,
               private router: Router,
               private dialog: MatDialog) {
+
     this.rentForm = formBuilder.group({
-      dni: this.rentForm.value.dni,
-      name: this.rentForm.value.name,
-      email: this.rentForm.value.email,
-      phone: this.rentForm.value.phone,
-      address: this.rentForm.value.address,
-      reservationDate: this.rentForm.value.reservationDate,
-      type: this.rentForm.value.type,
-      size: this.rentForm.value.size,
-      model: this.rentForm.value.model,
-      color: this.rentForm.value.color,
-      shirt: this.rentForm.value.shirt,
-      tie: this.rentForm.value.tie,
-      vest: this.rentForm.value.vest,
-      tryDate: this.rentForm.value.tryDate,
-      deliveryDate: this.rentForm.value.deliveryDate,
-      returnDate: this.rentForm.value.returnDate,
-      price: this.rentForm.value.price,
-      advancePayment: this.rentForm.value.advancePayment,
-      balance: this.rentForm.value.balance,
-      notes: this.rentForm.value.notes
+      id: '',
+      dni: '',
+      name: '',
+      email: '',
+      phone: '',
+      address: '',
+      reservationDate: '',
+      type: '',
+      size: '',
+      model: '',
+      color: '',
+      shirt: '',
+      tie: '',
+      vest: '',
+      tryDate: '',
+      deliveryDate: '',
+      returnDate: '',
+      price: '',
+      advancePayment: '',
+      balance: '',
+      notes: ''
 
     });
   }
@@ -62,7 +67,7 @@ export class DashboardComponent implements OnInit {
   tie: boolean;
   vest: boolean;
 
- ngOnInit(): void {}
+
 
   addRent() {
     this.rent = {
