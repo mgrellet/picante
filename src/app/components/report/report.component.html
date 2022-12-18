@@ -88,37 +88,37 @@
 </mat-paginator>-->
 
 
-<mat-table [dataSource]="dataSource">
+<mat-table [dataSource]="dataSource" matSort>
 
-  <ng-container matColumnDef="color">
-    <mat-header-cell *matHeaderCellDef>Color</mat-header-cell>
+  <ng-container matColumnDef="color" >
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Color</mat-header-cell>
     <mat-cell *matCellDef="let element">{{element.color}}</mat-cell>
   </ng-container>
 
-  <ng-container matColumnDef="size">
-    <mat-header-cell *matHeaderCellDef> Talle</mat-header-cell>
+  <ng-container matColumnDef="size" >
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Talle</mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.size | number}} </mat-cell>
   </ng-container>
 
-  <ng-container matColumnDef="type">
-    <mat-header-cell *matHeaderCellDef> Ropa</mat-header-cell>
+  <ng-container matColumnDef="type" >
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Ropa</mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
   </ng-container>
 
-  <ng-container matColumnDef="name">
-    <mat-header-cell *matHeaderCellDef> Nombre</mat-header-cell>
+  <ng-container matColumnDef="name" >
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre</mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
   </ng-container>
 
 
-  <ng-container matColumnDef="balance">
-    <mat-header-cell *matHeaderCellDef> Saldo</mat-header-cell>
+  <ng-container matColumnDef="balance" >
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Saldo</mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.balance | number}} </mat-cell>
   </ng-container>
 
 
-  <ng-container matColumnDef="notes">
-    <mat-header-cell *matHeaderCellDef=""> Notas</mat-header-cell>
+  <ng-container matColumnDef="notes" >
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Notas</mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.notes}} </mat-cell>
   </ng-container>
 

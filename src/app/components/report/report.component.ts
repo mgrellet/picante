@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {Rent} from "../interfaces/rent";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
@@ -11,7 +11,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   templateUrl: './report.component.html',
   styleUrls: ['./report.component.css']
 })
-export class ReportComponent implements OnInit {
+export class ReportComponent implements OnInit, AfterViewInit {
 
   weeklyRentList: Rent[] = [];
 
@@ -19,8 +19,10 @@ export class ReportComponent implements OnInit {
   displayedColumns = ['color', 'size', 'type', 'name', 'balance', 'notes'];
   dataSource = new MatTableDataSource<Rent>();
 
+  @ViewChild(MatSort) sort: MatSort;
+
   /*@ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+
 */
   constructor(private rentService: RentService, private snackBar: MatSnackBar,) {
   }
@@ -32,8 +34,8 @@ export class ReportComponent implements OnInit {
 
 
   ngAfterViewInit() {
-    /*this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;*/
+    /*this.dataSource.paginator = this.paginator;*/
+    this.dataSource.sort = this.sort;
   }
 
   loadGrid() {
