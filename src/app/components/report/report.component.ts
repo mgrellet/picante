@@ -20,21 +20,18 @@ export class ReportComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<Rent>();
 
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  /*@ViewChild(MatPaginator) paginator!: MatPaginator;
-
-*/
   constructor(private rentService: RentService, private snackBar: MatSnackBar,) {
   }
 
   ngOnInit(): void {
-    //this.loadGrid();
     this.dataSource.data = this.rentService.getRentListMock();
   }
 
 
   ngAfterViewInit() {
-    /*this.dataSource.paginator = this.paginator;*/
+    this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 
@@ -46,7 +43,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
     this.dataSource = new MatTableDataSource(this.weeklyRentList);
   }
 
-  applyFilter(event: Event) {
+  doFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
