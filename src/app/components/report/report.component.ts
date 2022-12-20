@@ -13,8 +13,6 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class ReportComponent implements OnInit, AfterViewInit {
 
-  weeklyRentList: Rent[] = [];
-
   //displayedColumns = ['color', 'size', 'type', 'name', 'balance', 'notes', 'actions'];
   displayedColumns = ['color', 'size', 'type', 'name', 'balance', 'notes'];
   dataSource = new MatTableDataSource<Rent>();
@@ -26,7 +24,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.dataSource.data = this.rentService.getRentListMock();
+    this.loadGrid();
   }
 
 
@@ -35,13 +33,15 @@ export class ReportComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  loadGrid() {
-    //this.weeklyRentList = this.rentService.getWeeklyRent();
-    this.weeklyRentList = !this.rentService.getWeeklyRent().length
-      ?[]
-      :this.rentService.getWeeklyRent();
-    this.dataSource = new MatTableDataSource(this.weeklyRentList);
+
+  private loadGrid() {
+    this.rentService.getRentList()
+      .subscribe(response => {
+        console.log("response:", response);
+        this.dataSource.data = response
+      });
   }
+
 
   doFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -49,10 +49,10 @@ export class ReportComponent implements OnInit, AfterViewInit {
   }
 
   deleteElement(index: number) {
-    this.rentService.deleteElement(index);
     this.snackBar.open('Registro de alquiler eliminado', '', {
       duration: 2000
     });
+
     this.loadGrid();
   }
 }
