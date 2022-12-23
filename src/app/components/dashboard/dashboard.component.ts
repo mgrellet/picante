@@ -20,9 +20,7 @@ export class DashboardComponent implements OnInit {
   addClicked: boolean;
   today: Date;
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   constructor(private formBuilder: FormBuilder,
               private rentService: RentService,
@@ -31,7 +29,7 @@ export class DashboardComponent implements OnInit {
               private dialog: MatDialog) {
 
     this.rentForm = formBuilder.group({
-      id: '',
+      // id: '',
       dni: '',
       name: '',
       email: '',
@@ -68,10 +66,9 @@ export class DashboardComponent implements OnInit {
   vest: boolean;
 
 
-
   addRent() {
     this.rent = {
-      id: '',
+      //id: '',
       dni: this.rentForm.value.dni,
       name: this.rentForm.value.name,
       email: this.rentForm.value.email,
@@ -91,20 +88,24 @@ export class DashboardComponent implements OnInit {
       price: this.rentForm.value.price,
       advancePayment: this.rentForm.value.advancePayment,
       balance: this.rentForm.value.balance,
-      notes: this.rentForm.value.notes
+      notes: this.rentForm.value.notes,
+      creationDate: new Date(),
     }
     const dialogRef = this.dialog.open(SaveRentDialogComponent, {
       data: this.rent
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log("result", result)// if true, save in DB, if false, if not, return
+      if (result) {// if true, save in DB, if false, if not, return
+        console.log("rent",this.rent);
+        //this.rentService.addElement(this.rent)
+      }
     })
   }
 
   saveRent() {
     if (this.addClicked) {
       this.rent = {
-        id: '',
+        //id: '',
         dni: this.rentForm.value.dni,
         name: this.rentForm.value.name,
         email: this.rentForm.value.email,
@@ -124,7 +125,8 @@ export class DashboardComponent implements OnInit {
         price: this.rentForm.value.price,
         advancePayment: this.rentForm.value.advancePayment,
         balance: this.rentForm.value.balance,
-        notes: this.rentForm.value.notes
+        notes: this.rentForm.value.notes,
+        creationDate: new Date(),
       }
       this.rentService.addElement(this.rent);
       this.showAddMessage();

@@ -2,16 +2,16 @@
   <form [formGroup]="rentForm" (ngSubmit)="addRent()">
 
     <mat-card fxFlex.lt-lg="100%" fxFlex="90em">
-      <mat-card-title  fxLayoutAlign="center">Carga de alquiler de traje</mat-card-title>
+      <mat-card-title fxLayoutAlign="center">Carga de alquiler de traje</mat-card-title>
 
-      <mat-card-content >
+      <mat-card-content>
 
-        <mat-form-field >
+        <mat-form-field>
           <mat-label>D.N.I</mat-label>
           <input matInput autocomplete="off" formControlName="dni">
         </mat-form-field>
 
-        <mat-form-field >
+        <mat-form-field>
           <mat-label>Señor(es)</mat-label>
           <input matInput formControlName="name">
         </mat-form-field>
@@ -31,7 +31,7 @@
           <input matInput formControlName="address">
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field class="datepicker">
           <mat-label>Fecha de reserva</mat-label>
           <input matInput [matDatepicker]="reservationdate" formControlName="reservationDate">
           <mat-hint>DD/MM/YYYY</mat-hint>
@@ -66,14 +66,14 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-
+        <br>
         <mat-checkbox class="check-box-margin" formControlName="shirt">Camisa</mat-checkbox>
 
         <mat-checkbox class="check-box-margin" formControlName="tie">Corbata</mat-checkbox>
 
         <mat-checkbox class="check-box-margin" formControlName="vest">Chaleco</mat-checkbox>
-
-        <mat-form-field>
+        <br>
+        <mat-form-field class="datepicker">
           <mat-label>Fecha de prueba</mat-label>
           <input matInput [matDatepicker]="trydate" formControlName="tryDate">
           <mat-hint>DD/MM/YYYY</mat-hint>
@@ -81,7 +81,7 @@
           <mat-datepicker #trydate></mat-datepicker>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field class="datepicker">
           <mat-label>Fecha de entrega</mat-label>
           <input matInput [matDatepicker]="givedate" formControlName="deliveryDate">
           <mat-hint>DD/MM/YYYY</mat-hint>
@@ -89,7 +89,7 @@
           <mat-datepicker #givedate></mat-datepicker>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field class="datepicker">
           <mat-label>Fecha de devolución</mat-label>
           <input matInput [matDatepicker]="returndate" formControlName="returnDate">
           <mat-hint>DD/MM/YYYY</mat-hint>

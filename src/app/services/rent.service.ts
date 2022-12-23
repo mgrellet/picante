@@ -42,7 +42,7 @@ export class RentService {
   deleteRentRegistry(rent: Rent) {
     this.angularFirestore
       .collection('rent')
-      .doc(rent.id)
+      .doc('')
       .delete().then(r => console.log(r));
   }
 

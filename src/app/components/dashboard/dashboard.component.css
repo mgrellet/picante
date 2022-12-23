@@ -4,7 +4,7 @@
 }
 
 mat-form-field {
-  width: 100%;
+  width: 85%;
   padding: 1em;
 }
 
@@ -16,5 +16,9 @@ mat-form-field {
 }
 .check-box-margin {
   margin: 0 10px;
+}
+
+.datepicker {
+  width: 25%;
 }
 

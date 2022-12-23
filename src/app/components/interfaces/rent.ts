@@ -1,6 +1,6 @@
 export interface Rent {
   //client info
-  id: string;
+  //id: string;
   dni: number
   name: string;
   email: string;
@@ -23,4 +23,6 @@ export interface Rent {
   shirt: boolean;
   tie: boolean;
   vest: boolean;
+  //metadata
+  creationDate: Date;
 }
