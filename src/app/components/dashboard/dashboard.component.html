@@ -46,7 +46,7 @@
 
         <mat-form-field>
           <mat-label>Talle</mat-label>
-          <mat-select>
+          <mat-select formControlName="size">
             <mat-option *ngFor="let size of suiteSizes" [value]="size">
               {{size}}
             </mat-option>
@@ -60,8 +60,8 @@
 
         <mat-form-field>
           <mat-label>Color</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let color of suiteColors" [value]="color">
+          <mat-select formControlName="color">
+            <mat-option *ngFor="let color of suiteColors" [value]="color" >
               {{color}}
             </mat-option>
           </mat-select>
@@ -114,7 +114,7 @@
 
         <mat-form-field>
           <mat-label>Notas</mat-label>
-          <input matInput formArrayName="notes">
+          <input matInput formControlName="notes">
         </mat-form-field>
 
       </mat-card-content>

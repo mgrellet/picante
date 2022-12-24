@@ -96,8 +96,7 @@ export class DashboardComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {// if true, save in DB, if false, if not, return
-        console.log("rent",this.rent);
-        //this.rentService.addElement(this.rent)
+        this.rentService.addElement(this.rent)
       }
     })
   }

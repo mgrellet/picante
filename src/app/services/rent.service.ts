@@ -68,7 +68,7 @@ export class RentService {
   }
 
   addElement(rent: Rent) {
-    console.log("paso", rent);
+    this.angularFirestore.collection('rent').add(rent);
   }
 
 }
