@@ -25,7 +25,7 @@ export class SignupComponent implements OnInit {
     console.log(form);
     this.authService.registerUser({
       email: form.value.email,
-      password: form.value.password
+      psswrd: form.value.psswrd
     })
   }
 }

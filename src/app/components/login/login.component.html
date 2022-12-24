@@ -7,11 +7,11 @@
     <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="login()">
       <mat-form-field appearance="fill" class="input-width">
         <mat-label>Usuario</mat-label>
-        <input matInput formControlName="user" autocomplete="off">
+        <input matInput formControlName="email" autocomplete="off">
       </mat-form-field>
       <mat-form-field appearance="fill" class="input-width">
         <mat-label>Contraseña</mat-label>
-        <input type="password" matInput formControlName="password" autocomplete="off">
+        <input type="password" matInput formControlName="psswrd" autocomplete="off">
       </mat-form-field>
       <br/>
       <button mat-raised-button color="primary"

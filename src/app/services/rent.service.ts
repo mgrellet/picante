@@ -21,7 +21,7 @@ export class RentService {
       .valueChanges();
   }
 
-  getRentList(): Observable<Rent[]> {
+  fetchRentList(): Observable<Rent[]> {
     return this.angularFirestore
       .collection<Rent>('rent')
       .valueChanges();

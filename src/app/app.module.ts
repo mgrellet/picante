@@ -15,6 +15,7 @@ import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {ReportComponent} from "./components/report/report.component";
 import {SaveRentDialogComponent} from "./components/dashboard/save-rent-dialog.component";
 import {RentService} from "./services/rent.service";
+import {AngularFireAuth, AngularFireAuthModule} from "@angular/fire/compat/auth";
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {RentService} from "./services/rent.service";
     LayoutModule,
     SharedModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireAuthModule,
   ],
   providers: [AuthService, RentService], //same instance in whole app
   bootstrap: [AppComponent],

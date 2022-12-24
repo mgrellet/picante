@@ -35,7 +35,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
 
 
   private loadGrid() {
-    this.rentService.getRentList()
+    this.rentService.fetchRentList()
       .subscribe(response => {
         console.log("response:", response);
         this.dataSource.data = response
