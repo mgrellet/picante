@@ -9,6 +9,7 @@ import {AngularFireAuth} from "@angular/fire/compat/auth";
 export class AuthService {
   private user: User;
   authChange = new Subject<boolean>();
+  private isAuthenticated = false;
 
   constructor(private router: Router, private angularFireAuth: AngularFireAuth) {
 
@@ -19,7 +20,6 @@ export class AuthService {
     console.log("pass", authData.psswrd);
     this.angularFireAuth.createUserWithEmailAndPassword(authData.email, authData.psswrd)
       .then(result => {
-        console.log(result)
         localStorage.setItem('user', JSON.stringify(result.user));
         this.successLogin()
       })
@@ -27,16 +27,17 @@ export class AuthService {
   }
 
   login(authData: AuthData) {
-    console.log("service", authData);
     this.successLogin();
   }
 
   private successLogin() {
+    this.isAuthenticated = true;
     this.authChange.next(true);
     this.router.navigate(['/dashboard']);
   }
 
   logout() {
+    this.isAuthenticated = false;
     this.user = {
       email: '',
       psswrd: ''
@@ -50,6 +51,6 @@ export class AuthService {
   }
 
   isAuth() {
-    return this.user !== undefined;
+    return this.isAuthenticated;
   }
 }
