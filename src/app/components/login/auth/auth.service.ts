@@ -4,6 +4,9 @@ import {Subject} from "rxjs";
 import {Injectable} from "@angular/core";
 import {Router} from "@angular/router"; // event emmiter that can be read from enywhere
 import {AngularFireAuth} from "@angular/fire/compat/auth";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import firebase from "firebase/compat";
+import UserCredential = firebase.auth.UserCredential;
 
 @Injectable() //inject service into service
 export class AuthService {
@@ -11,37 +14,48 @@ export class AuthService {
   authChange = new Subject<boolean>();
   private isAuthenticated = false;
 
-  constructor(private router: Router, private angularFireAuth: AngularFireAuth) {
+  constructor(private router: Router,
+              private angularFireAuth: AngularFireAuth,
+              private snackBar: MatSnackBar) {
 
   }
 
   registerUser(authData: AuthData) {
-    console.log("user", authData.email);
-    console.log("pass", authData.psswrd);
     this.angularFireAuth.createUserWithEmailAndPassword(authData.email, authData.psswrd)
       .then(result => {
         localStorage.setItem('user', JSON.stringify(result.user));
         this.successLogin()
       })
-      .catch(error => console.log(error));
+      .catch(error => {
+        this.snackBar.open('login incorrecto', '', {
+          duration: 3000
+        });
+        console.log(error)
+      });
   }
 
-  login(authData: AuthData) {
-    this.successLogin();
+  public async login(authData: AuthData) {
+    this.angularFireAuth.signInWithEmailAndPassword(authData.email, authData.psswrd)
+      .then(result => {
+        console.log(result);
+        this.successLogin();
+      })
+      .catch(e => {
+        console.error(e);
+        throw e;
+      });
   }
 
-  private successLogin() {
+  successLogin() {
+    console.log("success login")
     this.isAuthenticated = true;
     this.authChange.next(true);
     this.router.navigate(['/dashboard']);
   }
 
   logout() {
+    this.angularFireAuth.signOut();
     this.isAuthenticated = false;
-    this.user = {
-      email: '',
-      psswrd: ''
-    }
     this.authChange.next(false);
     this.router.navigate(['/login']);
   }

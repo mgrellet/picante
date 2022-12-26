@@ -26,8 +26,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {  }
 
   login() {
-    console.log(this.form.value.email);
-    console.log(this.form.value.psswrd);
     this.authService.login({
       email: this.form.value.email,
       psswrd: this.form.value.psswrd

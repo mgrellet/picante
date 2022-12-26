@@ -94,7 +94,9 @@ export class DashboardComponent implements OnInit {
     const dialogRef = this.dialog.open(SaveRentDialogComponent, {
       data: this.rent
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef
+      .afterClosed()
+      .subscribe(result => {
       if (result) {// if true, save in DB, if false, if not, return
         this.rentService.addElement(this.rent)
       }
