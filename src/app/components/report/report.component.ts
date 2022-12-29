@@ -13,6 +13,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class ReportComponent implements OnInit, AfterViewInit {
 
+  isLoading = true;
   //displayedColumns = ['color', 'size', 'type', 'name', 'balance', 'notes', 'actions'];
   displayedColumns = ['color', 'size', 'type', 'name', 'balance', 'notes'];
   dataSource = new MatTableDataSource<Rent>();
@@ -20,7 +21,8 @@ export class ReportComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private rentService: RentService, private snackBar: MatSnackBar,) {
+  constructor(private rentService: RentService,
+              private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -37,7 +39,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
   private loadGrid() {
     this.rentService.fetchRentList()
       .subscribe(response => {
-        console.log("response:", response);
+        this.isLoading = false;
         this.dataSource.data = response
       });
   }

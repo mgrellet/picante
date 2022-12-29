@@ -20,7 +20,8 @@ export class DashboardComponent implements OnInit {
   addClicked: boolean;
   today: Date;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   constructor(private formBuilder: FormBuilder,
               private rentService: RentService,
@@ -91,16 +92,21 @@ export class DashboardComponent implements OnInit {
       notes: this.rentForm.value.notes,
       creationDate: new Date(),
     }
+
     const dialogRef = this.dialog.open(SaveRentDialogComponent, {
       data: this.rent
     });
+
     dialogRef
       .afterClosed()
       .subscribe(result => {
-      if (result) {// if true, save in DB, if false, if not, return
-        this.rentService.addElement(this.rent)
-      }
-    })
+        if (result) {// if true, save in DB, if false, if not, return
+          this.rentService.addElement(this.rent)
+          this.showAddMessage();
+        } else {
+          this.showAddErrorMessage();
+        }
+      })
   }
 
   saveRent() {
@@ -141,7 +147,18 @@ export class DashboardComponent implements OnInit {
       + this.rentForm.value.name
       , ''
       , {
-        duration: 3000
+        duration: 3000,
+        panelClass: ['green-snackbar']
+      });
+    this.rentForm.reset();
+  }
+
+  showAddErrorMessage() {
+    this.snackBar.open('Error al agregar: ' + this.rentForm.value.name
+      , ''
+      , {
+        duration: 3000,
+        panelClass: ['red-snackbar']
       });
     this.rentForm.reset();
   }

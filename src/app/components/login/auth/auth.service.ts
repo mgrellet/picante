@@ -24,7 +24,7 @@ export class AuthService {
     this.angularFireAuth.createUserWithEmailAndPassword(authData.email, authData.psswrd)
       .then(result => {
         localStorage.setItem('user', JSON.stringify(result.user));
-        this.successLogin()
+        this.successLogin(authData.email)
       })
       .catch(error => {
         this.snackBar.open('login incorrecto', '', {
@@ -38,19 +38,24 @@ export class AuthService {
     this.angularFireAuth.signInWithEmailAndPassword(authData.email, authData.psswrd)
       .then(result => {
         console.log(result);
-        this.successLogin();
+        this.successLogin(authData.email);
       })
       .catch(e => {
         console.error(e);
-        throw e;
+        this.snackBar.open('login incorrecto', '', {
+          duration: 3000
+        });
       });
   }
 
-  successLogin() {
+  successLogin(name: string) {
     console.log("success login")
     this.isAuthenticated = true;
     this.authChange.next(true);
     this.router.navigate(['/dashboard']);
+    this.snackBar.open('Bienvenido ' + name, '', {
+      duration: 3000
+    });
   }
 
   logout() {

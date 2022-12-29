@@ -27,6 +27,7 @@ import {SidenavListComponent} from '../navigation/sidenav-list/sidenav-list.comp
 import {RouterLinkWithHref} from "@angular/router";
 import {MatSelectModule} from "@angular/material/select";
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 const modules = [
   CommonModule,
@@ -58,6 +59,7 @@ const modules = [
   MatSidenavModule,
   MatSelectModule,
   MatDialogModule,
+  MatProgressBarModule
 ]
 
 @NgModule({

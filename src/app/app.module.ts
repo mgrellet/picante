@@ -17,7 +17,6 @@ import {SaveRentDialogComponent} from "./components/dashboard/save-rent-dialog.c
 import {RentService} from "./services/rent.service";
 import {AngularFireAuth, AngularFireAuthModule} from "@angular/fire/compat/auth";
 
-
 @NgModule({
   declarations: [
     AppComponent,
