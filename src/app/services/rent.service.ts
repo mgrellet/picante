@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {Rent} from "../components/interfaces/rent";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {Observable} from "rxjs";
-import {UIService} from "./ui.service";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +10,7 @@ export class RentService {
 
   rentList: Rent[]; // naming convention, suffix your observable with $
 
-  constructor(private angularFirestore: AngularFirestore, uiService: UIService) {
+  constructor(private angularFirestore: AngularFirestore) {
   }
 
   getRent(id: string) {

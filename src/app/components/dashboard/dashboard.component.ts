@@ -7,7 +7,6 @@ import {MatDialog} from "@angular/material/dialog";
 import {Rent} from "../interfaces/rent";
 import {RentService} from "../../services/rent.service";
 import {SaveRentDialogComponent} from "./save-rent-dialog.component";
-import {UIService} from "../../services/ui.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -26,7 +25,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private rentService: RentService,
-              private uiService: UIService,
+              private snackBar: MatSnackBar,
               private router: Router,
               private dialog: MatDialog) {
 
@@ -144,12 +143,12 @@ export class DashboardComponent implements OnInit {
   }
 
   showAddMessage() {
-    this.uiService.showSnackBar('Alquiler agregado para: ' + this.rentForm.value.name, '', 3000);
+    this.showSnackBar('Alquiler agregado para: ' + this.rentForm.value.name, '', 3000);
     this.rentForm.reset();
   }
 
   showAddErrorMessage() {
-    this.uiService.showSnackBar('Error al agregar: ' + this.rentForm.value.name, '', 3000);
+    this.showSnackBar('Error al agregar: ' + this.rentForm.value.name, '', 3000);
     this.rentForm.reset();
   }
 
@@ -169,5 +168,14 @@ export class DashboardComponent implements OnInit {
     this.today.getHours();
     const localHour = new DatePipe('en-Us').transform(this.today, 'HH:mm:ss', 'GMT-3');
     return `Fecha de carga: ${dd} del ${mm} de ${yyyy} horas ${localHour}`;
+  }
+
+  showSnackBar(message: string, action: string, duration: number) {
+    this.snackBar.open(message
+      , action
+      , {
+        duration: duration,
+        panelClass: ['red-snackbar']
+      });
   }
 }

@@ -5,6 +5,7 @@ import {SignupComponent} from "./components/login/signup/signup.component";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {ReportComponent} from "./components/report/report.component";
 import {AuthGuard} from "./components/login/auth/auth.guard";
+import {InvoiceComponent} from "./components/invoice/invoice.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: "full"},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path: 'reports', component: ReportComponent, canActivate:[AuthGuard]},
+  {path: 'invoice', component: InvoiceComponent, canActivate:[AuthGuard]},
   {path: '**', redirectTo: 'login', pathMatch: "full"},
 
 ];
