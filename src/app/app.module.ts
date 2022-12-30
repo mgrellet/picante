@@ -9,7 +9,7 @@ import {SharedModule} from "./components/shared/shared.module";
 import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../environments/environment";
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
-import { SignupComponent } from './components/login/signup/signup.component';
+import {SignupComponent} from './components/login/signup/signup.component';
 import {AuthService} from "./components/login/auth/auth.service";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {ReportComponent} from "./components/report/report.component";
@@ -38,7 +38,7 @@ import {AngularFireAuth, AngularFireAuthModule} from "@angular/fire/compat/auth"
   ],
   providers: [AuthService, RentService], //same instance in whole app
   bootstrap: [AppComponent],
-  entryComponents:[SaveRentDialogComponent]
+  entryComponents: [SaveRentDialogComponent]
 })
 export class AppModule {
 }

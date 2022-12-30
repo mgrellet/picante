@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Rent} from "../components/interfaces/rent";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
-import {Observable, tap} from "rxjs";
-import {map} from "rxjs-compat/operator/map";
+import {Observable} from "rxjs";
+import {UIService} from "./ui.service";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class RentService {
 
   rentList: Rent[]; // naming convention, suffix your observable with $
 
-  constructor(private angularFirestore: AngularFirestore) {
+  constructor(private angularFirestore: AngularFirestore, uiService: UIService) {
   }
 
   getRent(id: string) {
@@ -68,7 +68,12 @@ export class RentService {
   }
 
   addElement(rent: Rent) {
-    this.angularFirestore.collection('rent').add(rent);
+    this.angularFirestore
+      .collection('rent')
+      .add(rent)
+      .then(response => {
+        console.log(response)
+      });
   }
 
 }

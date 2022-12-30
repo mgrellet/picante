@@ -7,6 +7,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {Rent} from "../interfaces/rent";
 import {RentService} from "../../services/rent.service";
 import {SaveRentDialogComponent} from "./save-rent-dialog.component";
+import {UIService} from "../../services/ui.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -25,7 +26,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private rentService: RentService,
-              private snackBar: MatSnackBar,
+              private uiService: UIService,
               private router: Router,
               private dialog: MatDialog) {
 
@@ -143,23 +144,12 @@ export class DashboardComponent implements OnInit {
   }
 
   showAddMessage() {
-    this.snackBar.open('Alquiler agregado para: '
-      + this.rentForm.value.name
-      , ''
-      , {
-        duration: 3000,
-        panelClass: ['green-snackbar']
-      });
+    this.uiService.showSnackBar('Alquiler agregado para: ' + this.rentForm.value.name, '', 3000);
     this.rentForm.reset();
   }
 
   showAddErrorMessage() {
-    this.snackBar.open('Error al agregar: ' + this.rentForm.value.name
-      , ''
-      , {
-        duration: 3000,
-        panelClass: ['red-snackbar']
-      });
+    this.uiService.showSnackBar('Error al agregar: ' + this.rentForm.value.name, '', 3000);
     this.rentForm.reset();
   }
 
