@@ -1,7 +1,9 @@
 import {Injectable} from '@angular/core';
-import {Rent} from "../components/interfaces/rent";
-import {AngularFirestore} from "@angular/fire/compat/firestore";
+import {Rent} from "../interfaces/rent";
+import {AngularFirestore, AngularFirestoreCollection, DocumentChangeAction} from "@angular/fire/compat/firestore";
 import {Observable} from "rxjs";
+import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +11,8 @@ import {Observable} from "rxjs";
 export class RentService {
 
   rentList: Rent[]; // naming convention, suffix your observable with $
+  list: Observable<Rent[]>;
+  rentCollection: AngularFirestoreCollection<Rent>;
 
   constructor(private angularFirestore: AngularFirestore) {
   }
@@ -21,9 +25,18 @@ export class RentService {
   }
 
   fetchRentList(): Observable<Rent[]> {
-    return this.angularFirestore
-      .collection<Rent>('rent')
-      .valueChanges();
+    this.rentCollection = this.angularFirestore.collection<Rent>('rent');
+    return this.rentCollection
+      .snapshotChanges()
+      .pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Rent;
+        data.id = a.payload.doc.id;
+        return {...data};
+      });
+    }));
+
+
   }
 
   createRentRegistry(rent: Rent) {

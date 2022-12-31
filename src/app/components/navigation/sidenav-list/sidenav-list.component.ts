@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Menu} from "../../interfaces/menu";
+import {Menu} from "../../../interfaces/menu";
 import {AuthService} from "../../login/auth/auth.service";
 import {Subscription} from "rxjs";
 

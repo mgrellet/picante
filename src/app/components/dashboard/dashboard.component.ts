@@ -4,7 +4,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {DatePipe} from "@angular/common";
 import {MatDialog} from "@angular/material/dialog";
-import {Rent} from "../interfaces/rent";
+import {Rent} from "../../interfaces/rent";
 import {RentService} from "../../services/rent.service";
 import {SaveRentDialogComponent} from "./save-rent-dialog.component";
 
@@ -69,7 +69,7 @@ export class DashboardComponent implements OnInit {
 
   addRent() {
     this.rent = {
-      //id: '',
+      id: '',
       dni: this.rentForm.value.dni,
       name: this.rentForm.value.name,
       email: this.rentForm.value.email,
@@ -112,7 +112,7 @@ export class DashboardComponent implements OnInit {
   saveRent() {
     if (this.addClicked) {
       this.rent = {
-        //id: '',
+        id: '',
         dni: this.rentForm.value.dni,
         name: this.rentForm.value.name,
         email: this.rentForm.value.email,

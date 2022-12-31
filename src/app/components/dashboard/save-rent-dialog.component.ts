@@ -1,6 +1,6 @@
 import {Component, Inject} from "@angular/core";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {Rent} from "../interfaces/rent";
+import {Rent} from "../../interfaces/rent";
 
 @Component({
   selector: 'save-rent-dialog',
