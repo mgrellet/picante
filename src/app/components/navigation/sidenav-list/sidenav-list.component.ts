@@ -2,6 +2,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Menu} from "../../../interfaces/menu";
 import {AuthService} from "../../login/auth/auth.service";
 import {Subscription} from "rxjs";
+import {RentDialogComponent} from "../../rent-dialog/rent-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-sidenav-list',
@@ -14,7 +16,8 @@ export class SidenavListComponent implements OnInit, OnDestroy {
   isAuth: boolean;
   authSubscription: Subscription;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+              private dialog: MatDialog) {
   }
 
   ngOnDestroy(): void {
@@ -29,5 +32,15 @@ export class SidenavListComponent implements OnInit, OnDestroy {
 
   onLogout() {
     this.authService.logout()
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(RentDialogComponent, {
+      width: '75%'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }

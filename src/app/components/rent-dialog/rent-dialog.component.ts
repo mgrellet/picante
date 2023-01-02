@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {RentService} from "../../services/rent.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {Rent} from "../../interfaces/rent";
 
 @Component({
   selector: 'app-rent-dialog',
@@ -17,10 +18,12 @@ export class RentDialogComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private rentService: RentService,
               private snackBar: MatSnackBar,
-              private dialogRef: MatDialogRef<RentDialogComponent>) {
+              private dialogRef: MatDialogRef<RentDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public editData: Rent) { // This is the data that we send to dialog
   }
 
   ngOnInit(): void {
+
     this.rentForm = this.formBuilder.group({
       //id: '',
       dni: ['', Validators.required],
@@ -43,8 +46,30 @@ export class RentDialogComponent implements OnInit {
       advancePayment: '',
       balance: '',
       notes: ''
-
     })
+    if (this.editData) {
+      this.rentForm.controls['dni'].setValue(this.editData.dni)
+      this.rentForm.controls['name'].setValue(this.editData.name)
+      this.rentForm.controls['email'].setValue(this.editData.email)
+      this.rentForm.controls['phone'].setValue(this.editData.phone)
+      this.rentForm.controls['address'].setValue(this.editData.address)
+      this.rentForm.controls['reservationDate'].setValue(this.editData.reservationDate)
+      this.rentForm.controls['type'].setValue(this.editData.type)
+      this.rentForm.controls['size'].setValue(this.editData.size)
+      this.rentForm.controls['model'].setValue(this.editData.model)
+      this.rentForm.controls['color'].setValue(this.editData.color)
+      this.rentForm.controls['shirt'].setValue(this.editData.shirt)
+      this.rentForm.controls['tie'].setValue(this.editData.tie)
+      this.rentForm.controls['vest'].setValue(this.editData.vest)
+      this.rentForm.controls['tryDate'].setValue(this.editData.tryDate)
+      this.rentForm.controls['deliveryDate'].setValue(this.editData.deliveryDate)
+      this.rentForm.controls['returnDate'].setValue(this.editData.returnDate)
+      this.rentForm.controls['price'].setValue(this.editData.price)
+      this.rentForm.controls['advancePayment'].setValue(this.editData.advancePayment)
+      this.rentForm.controls['balance'].setValue(this.editData.balance)
+      this.rentForm.controls['notes'].setValue(this.editData.notes)
+    }
+
   }
 
   search($event: KeyboardEvent) {
@@ -69,7 +94,7 @@ export class RentDialogComponent implements OnInit {
       this.showAddMessage();
       this.rentForm.reset();
       this.dialogRef.close();
-    }else{
+    } else {
       this.showSnackBar("Revise los campos requeridos", '', 3000);
     }
   }

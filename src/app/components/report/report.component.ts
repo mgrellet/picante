@@ -5,6 +5,8 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {RentService} from "../../services/rent.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {RentDialogComponent} from "../rent-dialog/rent-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-report',
@@ -15,18 +17,21 @@ export class ReportComponent implements OnInit, AfterViewInit {
 
   isLoading = true;
   //displayedColumns = ['color', 'size', 'type', 'name', 'balance', 'notes', 'actions'];
-  displayedColumns = ['color', 'size', 'type', 'name', 'balance', 'notes'];
-  dataSource = new MatTableDataSource<Rent>();
+  displayedColumns = ['name', 'type', 'color', 'size', 'balance', 'notes', 'actions'];
+  dataSource = new MatTableDataSource<Rent>;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private rentService: RentService,
-              private snackBar: MatSnackBar) {
+              private snackBar: MatSnackBar,
+              private dialog: MatDialog) {
+
+    this.loadGrid();
+
   }
 
   ngOnInit(): void {
-    this.loadGrid();
   }
 
 
@@ -40,7 +45,9 @@ export class ReportComponent implements OnInit, AfterViewInit {
     this.rentService.fetchRentList()
       .subscribe(response => {
         this.isLoading = false;
-        this.dataSource.data = response
+        this.dataSource = new MatTableDataSource(response)
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       });
   }
 
@@ -48,6 +55,16 @@ export class ReportComponent implements OnInit, AfterViewInit {
   doFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  editRent(element: Rent){
+    this.dialog.open(RentDialogComponent, {
+      width: '75%',
+      data: element
+    })
   }
 
   deleteElement(index: number) {

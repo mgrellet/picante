@@ -15,6 +15,10 @@
     <span class="nav-caption">Carga Alquiler</span>
   </a>
 
+  <div style="padding-left: 1em" *ngIf = "isAuth" >
+    <button mat-raised-button color="accent" (click)="openDialog()">Cargar alquiler</button>
+  </div>
+
   <a *ngIf = "isAuth" mat-list-item routerLink="/reports">
     <mat-icon>summarize</mat-icon>
     <span class="nav-caption">Reporte</span>
