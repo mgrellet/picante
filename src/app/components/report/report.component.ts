@@ -67,8 +67,8 @@ export class ReportComponent implements OnInit, AfterViewInit {
     })
   }
 
-  deleteElement(index: number) {
-    this.snackBar.open('Registro de alquiler eliminado', '', {
+  deleteRent(id: string) {
+    this.snackBar.open('Registro de alquiler eliminado '+id, '', {
       duration: 2000
     });
 

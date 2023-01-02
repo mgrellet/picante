@@ -52,7 +52,7 @@ export class AuthService {
     console.log("success login")
     this.isAuthenticated = true;
     this.authChange.next(true);
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/report']);
     this.snackBar.open('Bienvenido ' + name, '', {
       duration: 3000
     });

@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes, CanActivate} from '@angular/router';
 import {LoginComponent} from "./components/login/login.component";
 import {SignupComponent} from "./components/login/signup/signup.component";
-import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {ReportComponent} from "./components/report/report.component";
 import {AuthGuard} from "./components/login/auth/auth.guard";
 import {InvoiceComponent} from "./components/invoice/invoice.component";
@@ -11,8 +10,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: "full"},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
-  {path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
-  {path: 'reports', component: ReportComponent, canActivate:[AuthGuard]},
+  {path: 'report', component: ReportComponent, canActivate:[AuthGuard]},
   {path: 'invoice', component: InvoiceComponent, canActivate:[AuthGuard]},
   {path: '**', redirectTo: 'login', pathMatch: "full"},
 

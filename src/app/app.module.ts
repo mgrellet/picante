@@ -11,22 +11,18 @@ import {environment} from "../environments/environment";
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 import {SignupComponent} from './components/login/signup/signup.component';
 import {AuthService} from "./components/login/auth/auth.service";
-import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {ReportComponent} from "./components/report/report.component";
-import {SaveRentDialogComponent} from "./components/dashboard/save-rent-dialog.component";
 import {RentService} from "./services/rent.service";
-import {AngularFireAuth, AngularFireAuthModule} from "@angular/fire/compat/auth";
-import { InvoiceComponent } from './components/invoice/invoice.component';
-import { RentDialogComponent } from './components/rent-dialog/rent-dialog.component';
+import {AngularFireAuthModule} from "@angular/fire/compat/auth";
+import {InvoiceComponent} from './components/invoice/invoice.component';
+import {RentDialogComponent} from './components/rent-dialog/rent-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
-    DashboardComponent,
     ReportComponent,
-    SaveRentDialogComponent,
     InvoiceComponent,
     RentDialogComponent
   ],
@@ -42,7 +38,6 @@ import { RentDialogComponent } from './components/rent-dialog/rent-dialog.compon
   ],
   providers: [AuthService, RentService], //same instance in whole app
   bootstrap: [AppComponent],
-  entryComponents: [SaveRentDialogComponent]
 })
 export class AppModule {
 }

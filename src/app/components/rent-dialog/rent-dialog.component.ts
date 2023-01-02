@@ -12,8 +12,8 @@ import {Rent} from "../../interfaces/rent";
 })
 export class RentDialogComponent implements OnInit {
   rentForm: FormGroup;
-  suiteSizes: any;
-  suiteColors: any;
+  actionButton: string;
+
 
   constructor(private formBuilder: FormBuilder,
               private rentService: RentService,
@@ -23,7 +23,7 @@ export class RentDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.actionButton = "Guardar";
     this.rentForm = this.formBuilder.group({
       //id: '',
       dni: ['', Validators.required],
@@ -48,6 +48,7 @@ export class RentDialogComponent implements OnInit {
       notes: ''
     })
     if (this.editData) {
+      this.actionButton = "Actualizar";
       this.rentForm.controls['dni'].setValue(this.editData.dni)
       this.rentForm.controls['name'].setValue(this.editData.name)
       this.rentForm.controls['email'].setValue(this.editData.email)
@@ -88,7 +89,6 @@ export class RentDialogComponent implements OnInit {
   vest: boolean;
 
   addRent() {
-    console.log(this.rentForm.value)
     if (this.rentForm.valid) {
       this.rentService.addElement(this.rentForm.value)
       this.showAddMessage();

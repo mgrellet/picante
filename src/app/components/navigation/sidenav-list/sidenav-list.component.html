@@ -1,30 +1,25 @@
 <mat-nav-list>
 
-  <a *ngIf = "!isAuth" mat-list-item routerLink="/signup">
+  <a *ngIf="!isAuth" mat-list-item routerLink="/signup">
     <mat-icon>account_circle</mat-icon>
     <span class="nav-caption">Registrarse</span>
   </a>
 
-  <a *ngIf = "!isAuth" mat-list-item routerLink="/login">
+  <a *ngIf="!isAuth" mat-list-item routerLink="/login">
     <mat-icon>login</mat-icon>
     <span class="nav-caption">Entrar</span>
   </a>
 
-  <a *ngIf = "isAuth" mat-list-item routerLink="/dashboard">
-    <mat-icon>person_add_alt</mat-icon>
-    <span class="nav-caption">Carga Alquiler</span>
-  </a>
-
-  <div style="padding-left: 1em" *ngIf = "isAuth" >
+  <div *ngIf="isAuth" style="padding-left: 1em">
     <button mat-raised-button color="accent" (click)="openDialog()">Cargar alquiler</button>
   </div>
 
-  <a *ngIf = "isAuth" mat-list-item routerLink="/reports">
+  <!--<a *ngIf="isAuth" mat-list-item routerLink="/report">
     <mat-icon>summarize</mat-icon>
     <span class="nav-caption">Reporte</span>
-  </a>
+  </a>-->
 
-  <a *ngIf = "isAuth" mat-list-item style="cursor: pointer" (click)="onLogout()">
+  <a *ngIf="isAuth" mat-list-item style="cursor: pointer" (click)="onLogout()">
     <mat-icon>logout</mat-icon>
     <span class="nav-caption">Desloguearse</span>
   </a>

@@ -26,28 +26,18 @@
       </li>
 
       <li *ngIf="isAuth">
-        <a routerLink="/dashboard">
-          <span class="nav-caption">
-            <mat-icon matTooltip="Cargar alquiler">person_add_alt</mat-icon>
-          </span>
-        </a>
-      </li>
-
-      <li *ngIf="isAuth">
-        <a routerLink="/dashboard">
           <span class="nav-caption">
             <button mat-raised-button color="accent" (click)="openDialog()">Cargar alquiler</button>
           </span>
-        </a>
       </li>
 
-      <li *ngIf="isAuth">
-        <a routerLink="/reports">
+      <!--<li *ngIf="isAuth">
+        <a routerLink="/report">
           <span class="nav-caption">
             <mat-icon matTooltip="Reporte semanal">summarize</mat-icon>
           </span>
         </a>
-      </li>
+      </li>-->
 
       <li *ngIf="isAuth">
         <a routerLink="/invoice">
