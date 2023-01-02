@@ -8,7 +8,7 @@
 
         <mat-form-field>
           <mat-label>D.N.I</mat-label>
-          <input matInput autocomplete="off" formControlName="dni">
+          <input matInput autocomplete="off" formControlName="dni" (keyup)="search($event)">
         </mat-form-field>
 
         <mat-form-field>

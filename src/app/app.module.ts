@@ -17,6 +17,7 @@ import {SaveRentDialogComponent} from "./components/dashboard/save-rent-dialog.c
 import {RentService} from "./services/rent.service";
 import {AngularFireAuth, AngularFireAuthModule} from "@angular/fire/compat/auth";
 import { InvoiceComponent } from './components/invoice/invoice.component';
+import { RentDialogComponent } from './components/rent-dialog/rent-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { InvoiceComponent } from './components/invoice/invoice.component';
     DashboardComponent,
     ReportComponent,
     SaveRentDialogComponent,
-    InvoiceComponent
+    InvoiceComponent,
+    RentDialogComponent
   ],
   imports: [
     BrowserModule,

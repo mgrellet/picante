@@ -34,6 +34,15 @@
       </li>
 
       <li *ngIf="isAuth">
+
+        <a routerLink="/dashboard">
+          <span class="nav-caption">
+            <button mat-raised-button color="accent" (click)="openDialog()">Cargar alquiler</button>
+          </span>
+        </a>
+      </li>
+
+      <li *ngIf="isAuth">
         <a routerLink="/reports">
           <span class="nav-caption">
             <mat-icon matTooltip="Reporte semanal">summarize</mat-icon>

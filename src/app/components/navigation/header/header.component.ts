@@ -2,6 +2,8 @@ import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core'
 import {Menu} from "../../../interfaces/menu";
 import {AuthService} from "../../login/auth/auth.service";
 import {Subscription} from "rxjs";
+import {MatDialog} from "@angular/material/dialog";
+import {RentDialogComponent} from "../../rent-dialog/rent-dialog.component";
 
 @Component({
   selector: 'app-header',
@@ -14,7 +16,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   authSubscription: Subscription;
   menu: Menu[] = [];
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+              private dialog: MatDialog) {
   }
 
   ngOnDestroy(): void {
@@ -33,5 +36,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onLogout() {
     this.authService.logout();
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(RentDialogComponent, {
+      width: '75%'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }

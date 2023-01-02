@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
               private dialog: MatDialog) {
 
     this.rentForm = formBuilder.group({
-      // id: '',
+      id: '',
       dni: '',
       name: '',
       email: '',
@@ -177,5 +177,10 @@ export class DashboardComponent implements OnInit {
         duration: duration,
         panelClass: ['red-snackbar']
       });
+  }
+
+  search(event: Event) {
+  const filterValue = (event.target as HTMLInputElement).value;
+  console.log(filterValue);
   }
 }
