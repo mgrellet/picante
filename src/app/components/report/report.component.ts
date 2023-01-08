@@ -17,7 +17,6 @@ import {InvoiceDialogComponent} from "../invoice-dialog/invoice-dialog.component
 export class ReportComponent implements OnInit, AfterViewInit {
 
   isLoading = true;
-  //displayedColumns = ['color', 'size', 'type', 'name', 'balance', 'notes', 'actions'];
   displayedColumns = ['name', 'type', 'color', 'size', 'balance', 'notes', 'actions'];
   dataSource = new MatTableDataSource<Rent>;
 
@@ -69,6 +68,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
   }
 
   deleteRent(id: string) {
+    this.rentService.deleteRent(id)
     this.snackBar.open('Registro de alquiler eliminado '+id, '', {
       duration: 2000
     });

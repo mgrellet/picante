@@ -19,21 +19,12 @@ export class RentService {
   constructor(private angularFirestore: AngularFirestore) {
   }
 
-  getRent(id: string) {
-    return this.angularFirestore
-      .collection('rent')
-      .doc(id)
-      .valueChanges();
-  }
-
   fetchRentList(): Observable<Rent[]> {
     this.rentCollection = this.angularFirestore.collection<Rent>('rent');
     return this.rentCollection
       .snapshotChanges()
       .pipe(map(actions => {
         return actions.map(a => {
-
-
           const data = a.payload.doc.data() as any;
           //convert timestamp from firestore to date
           Object.keys(data).filter(key => data[key] instanceof Timestamp)
@@ -41,39 +32,12 @@ export class RentService {
               data[key] = data[key].toDate()
             })
           data.id = a.payload.doc.id;
-          //console.log("payload data: ", a.payload.doc.data())
           return {...data};
         });
       }));
-
-
-  }
-
-  createRentRegistry(rent: Rent) {
-    return new Promise<any>((resolve, reject) => {
-      this.angularFirestore
-        .collection('rent')
-        .add(rent)
-        .then(response => {
-          console.log(response);
-        }, error => reject(error))
-      ;
-    })
-  }
-
-  deleteRentRegistry(rent: Rent) {
-    this.angularFirestore
-      .collection('rent')
-      .doc('')
-      .delete().then(r => console.log(r));
-  }
-
-  getWeeklyRent() {
-    return this.rentList;
   }
 
   addRent(rent: Rent) {
-
     this.angularFirestore
       .collection('rent')
       .add(rent)
@@ -82,14 +46,18 @@ export class RentService {
       });
   }
 
-  updateRent(rent: Rent) {
-    let rentToUpdate = {...rent}
-    delete rentToUpdate.id
-    console.log("rent to update", rentToUpdate)
+  updateRent(rent: Rent, id: string | undefined) {
     return this.angularFirestore
       .collection('rent')
-      .doc(rent.id)
-      .update({rentToUpdate})
+      .doc(id)
+      .set({...rent})
+  }
+
+  deleteRent(id: string){
+    this.angularFirestore
+      .collection('rent')
+      .doc(id)
+      .delete().then(r => console.log(r));
   }
 
 }

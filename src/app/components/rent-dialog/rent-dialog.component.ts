@@ -120,7 +120,7 @@ export class RentDialogComponent implements OnInit {
   }
 
   private editRent() {
-    this.rentService.updateRent(this.editData)
+    this.rentService.updateRent(this.rentForm.value, this.editData.id)
       .then(r => {
           console.log(r);
           this.showAddMessage();
@@ -133,7 +133,7 @@ export class RentDialogComponent implements OnInit {
 
   showAddMessage() {
     let message = this.editData ? "actualizado" : "agregado";
-    this.showSnackBar('Alquiler"+ message +" para: ' + this.rentForm.value.name, '', 3000);
+    this.showSnackBar('Alquiler '+ message +' para: ' + this.rentForm.value.name, '', 3000);
     this.rentForm.reset();
   }
 
