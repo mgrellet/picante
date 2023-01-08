@@ -28,7 +28,7 @@ export class RentDialogComponent implements OnInit {
       //id: '',
       dni: ['', Validators.required],
       name: ['', Validators.required],
-      email: '',
+      email: ['', Validators.email],
       phone: '',
       address: '',
       reservationDate: ['', Validators.required],
@@ -69,6 +69,7 @@ export class RentDialogComponent implements OnInit {
       this.rentForm.controls['advancePayment'].setValue(this.editData.advancePayment)
       this.rentForm.controls['balance'].setValue(this.editData.balance)
       this.rentForm.controls['notes'].setValue(this.editData.notes)
+
     }
 
   }
@@ -90,17 +91,49 @@ export class RentDialogComponent implements OnInit {
 
   addRent() {
     if (this.rentForm.valid) {
-      this.rentService.addElement(this.rentForm.value)
-      this.showAddMessage();
-      this.rentForm.reset();
-      this.dialogRef.close();
+      if (this.editData) {
+        this.editRent();
+      } else {
+        this.rentService.addRent(this.rentForm.value)
+        this.showAddMessage();
+        this.rentForm.reset();
+        this.dialogRef.close();
+      }
     } else {
-      this.showSnackBar("Revise los campos requeridos", '', 3000);
+      this.showSnackBar("Revise los campos invalidos: "
+          + this.findInvalidControls()
+        , ''
+        , 3000);
     }
   }
 
+  public findInvalidControls() {
+    const invalid = [];
+    const controls = this.rentForm.controls;
+    for (const name in controls) {
+      if (controls[name].invalid) {
+
+        invalid.push(name);
+      }
+    }
+    return invalid;
+  }
+
+  private editRent() {
+    this.rentService.updateRent(this.editData)
+      .then(r => {
+          console.log(r);
+          this.showAddMessage();
+          this.rentForm.reset();
+          this.dialogRef.close();
+        }
+      )
+
+  }
+
   showAddMessage() {
-    this.showSnackBar('Alquiler agregado para: ' + this.rentForm.value.name, '', 3000);
+    let message = this.editData ? "actualizado" : "agregado";
+    this.showSnackBar('Alquiler"+ message +" para: ' + this.rentForm.value.name, '', 3000);
     this.rentForm.reset();
   }
 

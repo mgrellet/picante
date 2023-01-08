@@ -7,6 +7,7 @@ import {RentService} from "../../services/rent.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {RentDialogComponent} from "../rent-dialog/rent-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
+import {InvoiceDialogComponent} from "../invoice-dialog/invoice-dialog.component";
 
 @Component({
   selector: 'app-report',
@@ -73,5 +74,12 @@ export class ReportComponent implements OnInit, AfterViewInit {
     });
 
     this.loadGrid();
+  }
+
+  openInvoice(element: Rent) {
+    this.dialog.open(InvoiceDialogComponent, {
+      width: '75%',
+      data: element
+    })
   }
 }

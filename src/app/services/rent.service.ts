@@ -1,8 +1,10 @@
 import {Injectable} from '@angular/core';
 import {Rent} from "../interfaces/rent";
-import {AngularFirestore, AngularFirestoreCollection, DocumentChangeAction} from "@angular/fire/compat/firestore";
+import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/compat/firestore";
 import {Observable} from "rxjs";
 import { map } from 'rxjs/operators';
+import firebase from "firebase/compat/app";
+import Timestamp = firebase.firestore.Timestamp;
 
 
 @Injectable({
@@ -29,12 +31,20 @@ export class RentService {
     return this.rentCollection
       .snapshotChanges()
       .pipe(map(actions => {
-      return actions.map(a => {
-        const data = a.payload.doc.data() as Rent;
-        data.id = a.payload.doc.id;
-        return {...data};
-      });
-    }));
+        return actions.map(a => {
+
+
+          const data = a.payload.doc.data() as any;
+          //convert timestamp from firestore to date
+          Object.keys(data).filter(key => data[key] instanceof Timestamp)
+            .forEach(key => {
+              data[key] = data[key].toDate()
+            })
+          data.id = a.payload.doc.id;
+          //console.log("payload data: ", a.payload.doc.data())
+          return {...data};
+        });
+      }));
 
 
   }
@@ -58,34 +68,28 @@ export class RentService {
       .delete().then(r => console.log(r));
   }
 
-  updateRentRegistry(rent: Rent, id: string) {
-    return this.angularFirestore
-      .collection('rent')
-      .doc(id)
-      .update({
-        id: id,
-        name: rent.name,
-        color: rent.color,
-        size: rent.size,
-        type: rent.type,
-        balance: rent.balance,
-        reservationDate: rent.reservationDate,
-        notes: '',
-        recipeNumber: 0,
-      })
-  }
-
   getWeeklyRent() {
     return this.rentList;
   }
 
-  addElement(rent: Rent) {
+  addRent(rent: Rent) {
+
     this.angularFirestore
       .collection('rent')
       .add(rent)
       .then(response => {
         console.log(response)
       });
+  }
+
+  updateRent(rent: Rent) {
+    let rentToUpdate = {...rent}
+    delete rentToUpdate.id
+    console.log("rent to update", rentToUpdate)
+    return this.angularFirestore
+      .collection('rent')
+      .doc(rent.id)
+      .update({rentToUpdate})
   }
 
 }

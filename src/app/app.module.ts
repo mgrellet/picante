@@ -14,8 +14,9 @@ import {AuthService} from "./components/login/auth/auth.service";
 import {ReportComponent} from "./components/report/report.component";
 import {RentService} from "./services/rent.service";
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
-import {InvoiceComponent} from './components/invoice/invoice.component';
 import {RentDialogComponent} from './components/rent-dialog/rent-dialog.component';
+import { InvoiceDialogComponent } from './components/invoice-dialog/invoice-dialog.component';
+import {DatePipe} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -23,8 +24,8 @@ import {RentDialogComponent} from './components/rent-dialog/rent-dialog.componen
     LoginComponent,
     SignupComponent,
     ReportComponent,
-    InvoiceComponent,
-    RentDialogComponent
+    RentDialogComponent,
+    InvoiceDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +37,7 @@ import {RentDialogComponent} from './components/rent-dialog/rent-dialog.componen
     AngularFirestoreModule,
     AngularFireAuthModule,
   ],
-  providers: [AuthService, RentService], //same instance in whole app
+  providers: [AuthService, RentService, DatePipe], //same instance in whole app // providers: [DatePipe]
   bootstrap: [AppComponent],
 })
 export class AppModule {

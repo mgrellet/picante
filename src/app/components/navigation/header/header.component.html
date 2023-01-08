@@ -40,14 +40,6 @@
       </li>-->
 
       <li *ngIf="isAuth">
-        <a routerLink="/invoice">
-          <span class="nav-caption">
-            invoice
-          </span>
-        </a>
-      </li>
-
-      <li *ngIf="isAuth">
         <a style="cursor: pointer" (click)="onLogout()">
           <span class="nav-caption">
             <mat-icon matTooltip="Desloguearse">logout</mat-icon>
