@@ -8,6 +8,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {RentDialogComponent} from "../rent-dialog/rent-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {InvoiceDialogComponent} from "../invoice-dialog/invoice-dialog.component";
+import {filter} from "rxjs";
 
 @Component({
   selector: 'app-report',
@@ -17,7 +18,8 @@ import {InvoiceDialogComponent} from "../invoice-dialog/invoice-dialog.component
 export class ReportComponent implements OnInit, AfterViewInit {
 
   isLoading = true;
-  displayedColumns = ['name', 'type', 'color', 'size', 'balance', 'notes', 'actions'];
+  //displayedColumns = ['name', 'type', 'color', 'size', 'balance', 'notes', 'actions'];
+  displayedColumns = ['name', 'reservationDate', 'balance', 'notes', 'actions'];
   dataSource = new MatTableDataSource<Rent>;
 
   @ViewChild(MatSort) sort: MatSort;
@@ -45,7 +47,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
     this.rentService.fetchRentList()
       .subscribe(response => {
         this.isLoading = false;
-        this.dataSource = new MatTableDataSource(response)
+        this.dataSource = new MatTableDataSource(response);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       });

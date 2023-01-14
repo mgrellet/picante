@@ -18,7 +18,12 @@
           <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="color">
+        <ng-container matColumnDef="reservationDate">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha para reserva</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.reservationDate | date: "dd/MM/yyyy"}}</mat-cell>
+        </ng-container>
+
+        <!--<ng-container matColumnDef="color">
           <mat-header-cell *matHeaderCellDef mat-sort-header>Color</mat-header-cell>
           <mat-cell *matCellDef="let element">{{element.color}}</mat-cell>
         </ng-container>
@@ -31,7 +36,7 @@
         <ng-container matColumnDef="type">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Ropa</mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
-        </ng-container>
+        </ng-container>-->
 
         <ng-container matColumnDef="balance">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Saldo</mat-header-cell>
