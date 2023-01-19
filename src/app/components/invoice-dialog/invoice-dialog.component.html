@@ -11,7 +11,7 @@
               </td>
 
               <td>
-                Documento no valido como factura<br/>
+                Documento no válido como factura<br/>
                 3813945465 - Solo Whatsapp <br/>
                 fecha: January 1, 2015
               </td>
@@ -32,11 +32,11 @@
               </td>
 
               <td>
-                Señor(es).: <br/>
-                D.N.I: <br/>
-                Domicilio: <br/>
-                Tel: <br/>
-                Email:
+                Señor(es).: {{currentRent.name}}<br/>
+                D.N.I: {{currentRent.dni}}<br/>
+                Domicilio: {{currentRent.address}}<br/>
+                Tel: {{currentRent.phone}}<br/>
+                Email: {{currentRent.email}}
               </td>
             </tr>
           </table>
@@ -52,66 +52,66 @@
       <tr class="details">
         <td>Reserva para fecha</td>
 
-        <td>01/01/2025</td>
+        <td>{{currentRent.reservationDate}}</td>
       </tr>
 
       <tr class="details">
         <td>Un</td>
 
-        <td>Traje</td>
+        <td>{{currentRent.type}}</td>
       </tr>
 
       <tr class="details">
         <td>talle</td>
 
-        <td>56</td>
+        <td>{{currentRent.size}}</td>
       </tr>
       <tr class="details">
         <td>Color</td>
 
-        <td>Azul</td>
+        <td>{{currentRent.color}}</td>
       </tr>
 
       <tr class="details">
         <td>modelo</td>
 
-        <td>fit</td>
+        <td>{{currentRent.model}}</td>
       </tr>
 
       <tr class="details">
         <td>Camisa</td>
 
-        <td>no</td>
+        <td>{{currentRent.shirt}}</td>
       </tr>
 
       <tr class="details">
         <td>Corbata</td>
 
-        <td>Si</td>
+        <td>{{currentRent.tie}}</td>
       </tr>
 
       <tr class="details">
         <td>Chaleco</td>
 
-        <td>si</td>
+        <td>{{currentRent.vest}}</td>
       </tr>
 
       <tr class="details">
         <td>fecha de prueba</td>
 
-        <td>02/02/2025</td>
+        <td>{{currentRent.tryDate}}</td>
       </tr>
 
       <tr class="details">
         <td>Fecha de entrega</td>
 
-        <td>03/03/2025</td>
+        <td>{{currentRent.deliveryDate}}</td>
       </tr>
 
       <tr class="details">
         <td>Fecha de devolución</td>
 
-        <td>04/04/2025</td>
+        <td>{{currentRent.returnDate}}</td>
       </tr>
 
       <!-- DETAILS-->
@@ -124,19 +124,19 @@
       <tr class="item">
         <td>Precio total</td>
 
-        <td>$300.00</td>
+        <td>{{currentRent.price}}</td>
       </tr>
 
       <tr class="item">
         <td>Anticipo</td>
 
-        <td>$75.00</td>
+        <td>{{currentRent.advancePayment}}</td>
       </tr>
 
       <tr class="item last">
         <td>Saldo a retirar</td>
 
-        <td>$10.00</td>
+        <td>{{currentRent.balance}}</td>
       </tr>
 
       <!--<tr class="total">
@@ -150,6 +150,6 @@
 <div>
   <mat-dialog-actions align="end">
     <button mat-button color="warn" [mat-dialog-close]="true">Cerrar</button>
-    <button mat-button color="primary" (click)="downloadPdf()">Enviar recibo</button>
+    <button mat-button color="primary" (click)="downloadPdf()">Descargar</button>
   </mat-dialog-actions>
 </div>

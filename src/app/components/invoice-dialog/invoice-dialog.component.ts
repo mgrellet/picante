@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {Rent} from "../../interfaces/rent";
 
 @Component({
   selector: 'app-invoice-dialog',
@@ -8,6 +10,11 @@ import html2canvas from 'html2canvas';
   styleUrls: ['./invoice-dialog.component.css']
 })
 export class InvoiceDialogComponent {
+
+  constructor(@Inject(MAT_DIALOG_DATA) public rent: Rent) {
+  }
+
+  currentRent = {...this.rent}
 
   downloadPdf() {
     const DATA = document.getElementById('invoice');
