@@ -52,7 +52,7 @@
       <tr class="details">
         <td>Reserva para fecha</td>
 
-        <td>{{currentRent.reservationDate}}</td>
+        <td>{{currentRent.reservationDate | date:'dd/MM/yyyy' }}</td>
       </tr>
 
       <tr class="details">
@@ -73,45 +73,45 @@
       </tr>
 
       <tr class="details">
-        <td>modelo</td>
+        <td>Modelo</td>
 
         <td>{{currentRent.model}}</td>
       </tr>
 
-      <tr class="details">
-        <td>Camisa</td>
+        <tr [ngSwitch]="currentRent.shirt" class="details">
+          <td>Camisa</td>
+          <td *ngSwitchCase=true>Si</td>
+          <td *ngSwitchCase=false>No</td>
+        </tr>
 
-        <td>{{currentRent.shirt}}</td>
-      </tr>
-
-      <tr class="details">
+      <tr [ngSwitch]="currentRent.tie" class="details">
         <td>Corbata</td>
-
-        <td>{{currentRent.tie}}</td>
+        <td *ngSwitchCase=true>Si</td>
+        <td *ngSwitchCase=false>No</td>
       </tr>
 
-      <tr class="details">
+      <tr [ngSwitch]="currentRent.vest" class="details">
         <td>Chaleco</td>
-
-        <td>{{currentRent.vest}}</td>
+        <td *ngSwitchCase=true>Si</td>
+        <td *ngSwitchCase=false>No</td>
       </tr>
 
       <tr class="details">
         <td>fecha de prueba</td>
 
-        <td>{{currentRent.tryDate}}</td>
+        <td>{{currentRent.tryDate | date:'dd/MM/yyyy' }}</td>
       </tr>
 
       <tr class="details">
         <td>Fecha de entrega</td>
 
-        <td>{{currentRent.deliveryDate}}</td>
+        <td>{{currentRent.deliveryDate | date:'dd/MM/yyyy' }}</td>
       </tr>
 
       <tr class="details">
         <td>Fecha de devolución</td>
 
-        <td>{{currentRent.returnDate}}</td>
+        <td>{{currentRent.returnDate | date:'dd/MM/yyyy' }}</td>
       </tr>
 
       <!-- DETAILS-->
