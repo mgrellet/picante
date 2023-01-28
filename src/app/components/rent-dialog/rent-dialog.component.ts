@@ -42,9 +42,9 @@ export class RentDialogComponent implements OnInit {
       tryDate: '',
       deliveryDate: '',
       returnDate: '',
-      price: '',
-      advancePayment: '',
-      balance: '',
+      price: 0,
+      advancePayment: 0,
+      balance: 0,
       notes: ''
     })
     if (this.editData) {
@@ -67,7 +67,7 @@ export class RentDialogComponent implements OnInit {
       this.rentForm.controls['returnDate'].setValue(this.editData.returnDate)
       this.rentForm.controls['price'].setValue(this.editData.price)
       this.rentForm.controls['advancePayment'].setValue(this.editData.advancePayment)
-      this.rentForm.controls['balance'].setValue(this.editData.balance)
+      this.rentForm.controls['balance'].setValue(this.editData.price - this.editData.advancePayment)
       this.rentForm.controls['notes'].setValue(this.editData.notes)
 
     }
@@ -94,6 +94,9 @@ export class RentDialogComponent implements OnInit {
       if (this.editData) {
         this.editRent();
       } else {
+        let balance:number = Number(this.rentForm.controls['price']) - Number(this.rentForm.controls['advancePayment'])
+        this.rentForm.controls['balance'].setValue(balance)
+        console.log("this.rentForm", this.rentForm)
         this.rentService.addRent(this.rentForm.value)
         this.showAddMessage();
         this.rentForm.reset();
@@ -112,7 +115,6 @@ export class RentDialogComponent implements OnInit {
     const controls = this.rentForm.controls;
     for (const name in controls) {
       if (controls[name].invalid) {
-
         invalid.push(name);
       }
     }

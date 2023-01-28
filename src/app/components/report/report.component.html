@@ -1,6 +1,6 @@
 <section class="rentLayout" fxLayout fxLayoutAlign="center">
   <mat-card fxFlex.lt-lg="100%" fxFlex="90em">
-    <mat-card-title fxLayoutAlign="center">Carga de alquiler de traje</mat-card-title>
+    <mat-card-title fxLayoutAlign="center">Alquileres</mat-card-title>
 
     <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
 
@@ -40,7 +40,7 @@
 
         <ng-container matColumnDef="balance">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Saldo</mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.balance | currency}} </mat-cell>
+          <mat-cell *matCellDef="let element" [ngClass]="element.balance == 0 ? 'active' : 'inactive'"> {{element.balance | currency}} </mat-cell>
         </ng-container>
 
 

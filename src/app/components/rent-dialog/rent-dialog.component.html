@@ -105,7 +105,7 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Saldo</mat-label>
-      <input matInput formControlName="balance">
+      <input [readonly]="true" matInput formControlName="balance" >
     </mat-form-field>
 
     <mat-form-field appearance="outline">

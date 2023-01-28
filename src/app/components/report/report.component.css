@@ -12,3 +12,11 @@ table {
 td, th {
   width: 25%;
 }
+
+.active {
+  color: green;
+}
+
+.inactive{
+  color: red;
+}

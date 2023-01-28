@@ -8,7 +8,6 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {RentDialogComponent} from "../rent-dialog/rent-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {InvoiceDialogComponent} from "../invoice-dialog/invoice-dialog.component";
-import {filter} from "rxjs";
 
 @Component({
   selector: 'app-report',
@@ -46,13 +45,20 @@ export class ReportComponent implements OnInit, AfterViewInit {
   private loadGrid() {
     this.rentService.fetchRentList()
       .subscribe(response => {
+        let rents: Rent[] = this.calculateBalance(response);
         this.isLoading = false;
-        this.dataSource = new MatTableDataSource(response);
+        this.dataSource = new MatTableDataSource(rents);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       });
   }
 
+  calculateBalance(rents: Rent[]): Rent[] {
+    return rents.map(item => {
+      item.balance = item.price - item.advancePayment;
+      return item;
+    })
+  }
 
   doFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -62,7 +68,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
     }
   }
 
-  editRent(element: Rent){
+  editRent(element: Rent) {
     this.dialog.open(RentDialogComponent, {
       width: '75%',
       data: element
@@ -71,7 +77,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
 
   deleteRent(id: string) {
     this.rentService.deleteRent(id)
-    this.snackBar.open('Registro de alquiler eliminado '+id, '', {
+    this.snackBar.open('Registro de alquiler eliminado ' + id, '', {
       duration: 2000
     });
 
