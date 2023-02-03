@@ -17,6 +17,7 @@ import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {RentDialogComponent} from './components/rent-dialog/rent-dialog.component';
 import { InvoiceDialogComponent } from './components/invoice-dialog/invoice-dialog.component';
 import {DatePipe} from "@angular/common";
+import { BalanceStyleDirective } from './directives/balance-style.directive';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {DatePipe} from "@angular/common";
     SignupComponent,
     ReportComponent,
     RentDialogComponent,
-    InvoiceDialogComponent
+    InvoiceDialogComponent,
+    BalanceStyleDirective
   ],
   imports: [
     BrowserModule,

@@ -38,11 +38,15 @@
           <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
         </ng-container>-->
 
-        <ng-container matColumnDef="balance">
+        <!--<ng-container matColumnDef="balance">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Saldo</mat-header-cell>
           <mat-cell *matCellDef="let element" [ngClass]="element.balance == 0 ? 'active' : 'inactive'"> {{element.balance | currency}} </mat-cell>
-        </ng-container>
+        </ng-container>-->
 
+        <ng-container matColumnDef="balance">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Saldo</mat-header-cell>
+          <mat-cell *matCellDef="let element" [appBalanceStyle]="element.balance"> {{element.balance | currency}} </mat-cell>
+        </ng-container>
 
         <ng-container matColumnDef="notes">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Notas</mat-header-cell>
