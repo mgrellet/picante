@@ -17,8 +17,7 @@ import {InvoiceDialogComponent} from "../invoice-dialog/invoice-dialog.component
 export class ReportComponent implements OnInit, AfterViewInit {
 
   isLoading = true;
-  //displayedColumns = ['name', 'type', 'color', 'size', 'balance', 'notes', 'actions'];
-  displayedColumns = ['name', 'reservationDate', 'balance', 'notes', 'actions'];
+  displayedColumns = ['name', 'reservationDate', 'notes', 'balance', 'actions'];
   dataSource = new MatTableDataSource<Rent>;
 
   @ViewChild(MatSort) sort: MatSort;
